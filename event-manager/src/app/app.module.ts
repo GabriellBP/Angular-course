@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
+import { CoursesModule } from './courses/courses.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { FirstComponent } from './first/first.component';
     FirstComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CoursesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

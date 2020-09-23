@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent{
+  description: string;
+  courses: string[];
 
-  constructor() { }
+  constructor() {
+    this.description = 'List of courses from Asus';
+    this.courses = ['Angular', 'Django'];
+  }
 
 }

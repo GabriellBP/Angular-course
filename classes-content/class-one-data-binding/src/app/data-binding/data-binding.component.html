@@ -1,18 +1,45 @@
 <section>
 
-  <article>
-    <h1>Interpolação</h1>
-    <p>String renderizado usando interpolação: {{url}}</p>
-    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
-    <p>Resultado de 1 + 1 + getValue() é: {{ 1 + 1 + getValue() }}</p>
-    <p>Curso da Asus e curti o curso: {{asusCourse && getLikedCourse()}}</p>
-  </article>
+<!--  <article>-->
+<!--    <h1>Interpolação</h1>-->
+<!--    <p>String renderizado usando interpolação: {{url}}</p>-->
+<!--    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>-->
+<!--    <p>Resultado de 1 + 1 + getValue() é: {{ 1 + 1 + getValue() }}</p>-->
+<!--    <p>Curso da Asus e curti o curso: {{asusCourse && getLikedCourse()}}</p>-->
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h3>Property Binding</h3>-->
+<!--    <img src="{{asusHqImage}}"/>-->
+<!--    <img [src]="asusHqImage"/>-->
+<!--    <img bind-src="asusHqImage"/>-->
+<!--  </article>-->
 
   <article>
-    <h3>Property Binding</h3>
-    <img src="{{asusHqImage}}"/>
-    <img [src]="asusHqImage"/>
-    <img bind-src="asusHqImage"/>
+    <h1>Class e Style Binding</h1>
+    <div>
+      Selecione uma classe:
+      <select #classe (change)="0">
+        <option value="success">Sucesso</option>
+        <option value="info">Informação</option>
+        <option value="alert">Alerta</option>
+        <option value="error">Erro</option>
+      </select>
+      <br><br>
+
+      <div class="box {{ classe.value }}">
+        Texto colorido conforme valor do combobox
+      </div>
+
+      <div class="box" [class.success]="classe.value == 'success'">Sucesso</div>
+      <div class="box" [class.info]="classe.value == 'info'">Informação</div>
+      <div class="box" [class.alert]="classe.value == 'alert'">Alerta</div>
+      <div class="box" [class.error]="classe.value == 'error'">Erro</div>
+
+
+      <div class="box" [style.display]="classe.value == 'error' ? 'flex' : 'none'">Esse texto só aparece  caso o valor seja "Erro"</div>
+
+    </div>
   </article>
 
 </section>

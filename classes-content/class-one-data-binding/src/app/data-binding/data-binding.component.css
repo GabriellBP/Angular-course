@@ -1,0 +1,25 @@
+.box {
+  margin: 32px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dotted black;
+  height: 72px;
+}
+
+.success {
+  background-color: #c6f68d;
+}
+
+.info {
+  background-color: #BBDEFB;
+}
+
+.alert {
+  background-color: #FFF59D;
+}
+
+.error {
+  background-color: #EF5350;
+}

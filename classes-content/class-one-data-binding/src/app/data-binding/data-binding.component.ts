@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
+  url = 'http://asus.com.br';
+  asusCourse = true;
+  asusHqImage = 'http://tibahia.com/wp-content/uploads/2019/12/asus-hq.jpeg';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getValue() {
+    return 1;
+  }
+
+  getLikedCourse() {
+    return true;
+  }
 }

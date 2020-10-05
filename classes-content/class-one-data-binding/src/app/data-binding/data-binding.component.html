@@ -62,33 +62,40 @@
 <!--    </div>-->
 <!--  </article>-->
 
+<!--  <article>-->
+<!--    <h1>Two-way data binding</h1>-->
+<!--    <div>-->
+<!--      <input type="text"-->
+<!--        [value]="name"-->
+<!--        (input)="name = $event.target['value']"-->
+<!--      />-->
+
+<!--      <input type="text"-->
+<!--             [ngModel]="name"-->
+<!--             (ngModelChange)="name = $event"-->
+<!--      />-->
+
+<!--      <input type="text"-->
+<!--             [(ngModel)]="name"-->
+<!--      />-->
+
+<!--      <p>Você digitou: {{name}}</p>-->
+<!--    </div>-->
+
+<!--    <div>-->
+
+<!--      <p>Meu nome é {{person.name}} e tenho {{person.age}} anos de idade.</p>-->
+
+<!--      <input type="text" [(ngModel)]="person.name">-->
+<!--      <input type="text" [(ngModel)]="person.age">-->
+<!--    </div>-->
+<!--  </article>-->
+
   <article>
-    <h1>Two-way data binding</h1>
-    <div>
-      <input type="text"
-        [value]="name"
-        (input)="name = $event.target['value']"
-      />
+    <h1>Input/Output Properties</h1>
 
-      <input type="text"
-             [ngModel]="name"
-             (ngModelChange)="name = $event"
-      />
+    <asus-course-component [courseName]="course"></asus-course-component>
 
-      <input type="text"
-             [(ngModel)]="name"
-      />
-
-      <p>Você digitou: {{name}}</p>
-    </div>
-
-    <div>
-
-      <p>Meu nome é {{person.name}} e tenho {{person.age}} anos de idade.</p>
-
-      <input type="text" [(ngModel)]="person.name">
-      <input type="text" [(ngModel)]="person.age">
-    </div>
   </article>
 
 </section>

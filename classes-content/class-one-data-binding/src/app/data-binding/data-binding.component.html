@@ -15,30 +15,46 @@
 <!--    <img bind-src="asusHqImage"/>-->
 <!--  </article>-->
 
+<!--  <article>-->
+<!--    <h1>Class e Style Binding</h1>-->
+<!--    <div>-->
+<!--      Selecione uma classe:-->
+<!--      <select #classe (change)="0">-->
+<!--        <option value="success">Sucesso</option>-->
+<!--        <option value="info">Informação</option>-->
+<!--        <option value="alert">Alerta</option>-->
+<!--        <option value="error">Erro</option>-->
+<!--      </select>-->
+<!--      <br><br>-->
+
+<!--      <div class="box {{ classe.value }}">-->
+<!--        Texto colorido conforme valor do combobox-->
+<!--      </div>-->
+
+<!--      <div class="box" [class.success]="classe.value == 'success'">Sucesso</div>-->
+<!--      <div class="box" [class.info]="classe.value == 'info'">Informação</div>-->
+<!--      <div class="box" [class.alert]="classe.value == 'alert'">Alerta</div>-->
+<!--      <div class="box" [class.error]="classe.value == 'error'">Erro</div>-->
+
+
+<!--      <div class="box" [style.display]="classe.value == 'error' ? 'flex' : 'none'">Esse texto só aparece  caso o valor seja "Erro"</div>-->
+
+<!--    </div>-->
+<!--  </article>-->
+
   <article>
-    <h1>Class e Style Binding</h1>
+    <h1>Event binding</h1>
     <div>
-      Selecione uma classe:
-      <select #classe (change)="0">
-        <option value="success">Sucesso</option>
-        <option value="info">Informação</option>
-        <option value="alert">Alerta</option>
-        <option value="error">Erro</option>
-      </select>
+      <button class="btn" (click)="clicked()">Click me!</button>
       <br><br>
+      <input #inputField type="text"
+             (keyup)="onKeyUp($event)"
+             (keyup.enter)="saveValue($event.target.value)"
+             (blur)="saveValue($event.target['value'])"
+              />
 
-      <div class="box {{ classe.value }}">
-        Texto colorido conforme valor do combobox
-      </div>
-
-      <div class="box" [class.success]="classe.value == 'success'">Sucesso</div>
-      <div class="box" [class.info]="classe.value == 'info'">Informação</div>
-      <div class="box" [class.alert]="classe.value == 'alert'">Alerta</div>
-      <div class="box" [class.error]="classe.value == 'error'">Erro</div>
-
-
-      <div class="box" [style.display]="classe.value == 'error' ? 'flex' : 'none'">Esse texto só aparece  caso o valor seja "Erro"</div>
-
+      <p>Valor atual: {{currentValue}}</p>
+      <p>Valor salvo: {{savedValue}}</p>
     </div>
   </article>
 

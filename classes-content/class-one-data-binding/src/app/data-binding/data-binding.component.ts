@@ -11,6 +11,9 @@ export class DataBindingComponent implements OnInit {
   asusCourse = true;
   asusHqImage = 'http://tibahia.com/wp-content/uploads/2019/12/asus-hq.jpeg';
 
+  currentValue = "";
+  savedValue = "";
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,5 +25,18 @@ export class DataBindingComponent implements OnInit {
 
   getLikedCourse() {
     return true;
+  }
+
+  clicked() {
+    alert('O botão foi clicado.');
+  }
+
+  onKeyUp($event) {
+    console.log($event.target.value);
+    this.currentValue = $event.target.value;
+  }
+
+  saveValue(value: any) {
+    this.savedValue = value;
   }
 }

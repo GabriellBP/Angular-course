@@ -42,23 +42,32 @@
 <!--    </div>-->
 <!--  </article>-->
 
+<!--  <article>-->
+<!--    <h1>Event binding</h1>-->
+<!--    <div>-->
+<!--      <button class="btn" (click)="clicked()">Click me!</button>-->
+<!--      <br><br>-->
+<!--      <input type="text"-->
+<!--             (keyup)="onKeyUp($event)"-->
+<!--             (keyup.enter)="saveValue(inputField.value)"-->
+<!--             (blur)="saveValue(inputField.value)"-->
+<!--              #inputField />-->
+
+<!--      <p>Valor atual: {{currentValue}}</p>-->
+<!--      <p>Valor salvo: {{savedValue}}</p>-->
+
+<!--      <br><br>-->
+
+<!--      <span (mouseover)="onMouseOver()" [class.highlight]="isMouseOver" (mouseout)="onMouseOut()">Passe o mouse sobre esse texto</span>-->
+<!--    </div>-->
+<!--  </article>-->
+
   <article>
-    <h1>Event binding</h1>
+    <h1>Two-way data binding</h1>
     <div>
-      <button class="btn" (click)="clicked()">Click me!</button>
-      <br><br>
       <input type="text"
-             (keyup)="onKeyUp($event)"
-             (keyup.enter)="saveValue(inputField.value)"
-             (blur)="saveValue(inputField.value)"
-              #inputField />
-
-      <p>Valor atual: {{currentValue}}</p>
-      <p>Valor salvo: {{savedValue}}</p>
-
-      <br><br>
-
-      <span (mouseover)="onMouseOver()" [class.highlight]="isMouseOver" (mouseout)="onMouseOut()">Passe o mouse sobre esse texto</span>
+        [value]="name"
+      />
     </div>
   </article>
 

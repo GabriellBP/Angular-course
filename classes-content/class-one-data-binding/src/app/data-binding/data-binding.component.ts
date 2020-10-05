@@ -16,6 +16,8 @@ export class DataBindingComponent implements OnInit {
 
   isMouseOver = false;
 
+  name = "asus";
+
   constructor() { }
 
   ngOnInit(): void {

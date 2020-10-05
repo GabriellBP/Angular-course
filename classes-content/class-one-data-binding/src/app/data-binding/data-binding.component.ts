@@ -14,6 +14,8 @@ export class DataBindingComponent implements OnInit {
   currentValue = "";
   savedValue = "";
 
+  isMouseOver = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -38,5 +40,13 @@ export class DataBindingComponent implements OnInit {
 
   saveValue(value: any) {
     this.savedValue = value;
+  }
+
+  onMouseOut() {
+    this.isMouseOver = false;
+  }
+
+  onMouseOver() {
+    this.isMouseOver = true;
   }
 }

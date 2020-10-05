@@ -1,3 +1,7 @@
+* {
+  font-family: Arial, sans-serif;
+}
+
 .box {
   margin: 32px;
   width: 50%;
@@ -34,4 +38,10 @@
 
 .btn:hover {
   background-color: #0D47A1;
+}
+
+.highlight {
+  color: #fff;
+  background-color: #D84315;
+  font-weight: bold;
 }

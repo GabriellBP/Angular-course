@@ -1,1 +1,18 @@
-<p>data-binding works!</p>
+<section>
+
+  <article>
+    <h1>Interpolação</h1>
+    <p>String renderizado usando interpolação: {{url}}</p>
+    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
+    <p>Resultado de 1 + 1 + getValue() é: {{ 1 + 1 + getValue() }}</p>
+    <p>Curso da Asus e curti o curso: {{asusCourse && getLikedCourse()}}</p>
+  </article>
+
+  <article>
+    <h3>Property Binding</h3>
+    <img src="{{asusHqImage}}"/>
+    <img [src]="asusHqImage"/>
+    <img bind-src="asusHqImage"/>
+  </article>
+
+</section>

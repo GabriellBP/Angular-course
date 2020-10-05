@@ -18,6 +18,11 @@ export class DataBindingComponent implements OnInit {
 
   name = "asus";
 
+  person = {
+    name: 'Gabriel',
+    age: 36
+  }
+
   constructor() { }
 
   ngOnInit(): void {

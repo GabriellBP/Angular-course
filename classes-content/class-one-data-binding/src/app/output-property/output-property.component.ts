@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'counter',
@@ -10,6 +10,7 @@ export class OutputPropertyComponent implements OnInit {
   @Input()
   count = 0;
 
+  @Output()
   countChanged = new EventEmitter();
 
   constructor() { }

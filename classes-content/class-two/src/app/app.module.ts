@@ -6,13 +6,15 @@ import { NgifDirectiveComponent } from './ngif-directive/ngif-directive.componen
 import { NgforDirectiveComponent } from './ngfor-directive/ngfor-directive.component';
 import { NgclassDirectiveComponent } from './ngclass-directive/ngclass-directive.component';
 import {FormsModule} from "@angular/forms";
+import { NgstyleDirectiveComponent } from './ngstyle-directive/ngstyle-directive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NgifDirectiveComponent,
     NgforDirectiveComponent,
-    NgclassDirectiveComponent
+    NgclassDirectiveComponent,
+    NgstyleDirectiveComponent
   ],
   imports: [
     BrowserModule,

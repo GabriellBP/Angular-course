@@ -9,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import { NgstyleDirectiveComponent } from './ngstyle-directive/ngstyle-directive.component';
 import { ElvisOperatorComponent } from './elvis-operator/elvis-operator.component';
 import { NgContentExampleComponent } from './ng-content-example/ng-content-example.component';
+import { YellowBgDirective } from './shared/yellow-bg.directive';
+import { CustomDirectivesComponent } from './custom-directives/custom-directives.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { NgContentExampleComponent } from './ng-content-example/ng-content-examp
     NgclassDirectiveComponent,
     NgstyleDirectiveComponent,
     ElvisOperatorComponent,
-    NgContentExampleComponent
+    NgContentExampleComponent,
+    YellowBgDirective,
+    CustomDirectivesComponent
   ],
   imports: [
     BrowserModule,

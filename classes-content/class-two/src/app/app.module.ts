@@ -8,6 +8,7 @@ import { NgclassDirectiveComponent } from './ngclass-directive/ngclass-directive
 import {FormsModule} from "@angular/forms";
 import { NgstyleDirectiveComponent } from './ngstyle-directive/ngstyle-directive.component';
 import { ElvisOperatorComponent } from './elvis-operator/elvis-operator.component';
+import { NgContentExampleComponent } from './ng-content-example/ng-content-example.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ElvisOperatorComponent } from './elvis-operator/elvis-operator.componen
     NgforDirectiveComponent,
     NgclassDirectiveComponent,
     NgstyleDirectiveComponent,
-    ElvisOperatorComponent
+    ElvisOperatorComponent,
+    NgContentExampleComponent
   ],
   imports: [
     BrowserModule,

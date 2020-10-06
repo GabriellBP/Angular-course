@@ -1,0 +1,103 @@
+<section>
+
+<!--  <article>-->
+<!--    <h1>Interpolação</h1>-->
+<!--    <p>String renderizado usando interpolação: {{url}}</p>-->
+<!--    <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>-->
+<!--    <p>Resultado de 1 + 1 + getValue() é: {{ 1 + 1 + getValue() }}</p>-->
+<!--    <p>Curso da Asus e curti o curso: {{asusCourse && getLikedCourse()}}</p>-->
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h3>Property Binding</h3>-->
+<!--    <img src="{{asusHqImage}}"/>-->
+<!--    <img [src]="asusHqImage"/>-->
+<!--    <img bind-src="asusHqImage"/>-->
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h1>Class e Style Binding</h1>-->
+<!--    <div>-->
+<!--      Selecione uma classe:-->
+<!--      <select #classe (change)="0">-->
+<!--        <option value="success">Sucesso</option>-->
+<!--        <option value="info">Informação</option>-->
+<!--        <option value="alert">Alerta</option>-->
+<!--        <option value="error">Erro</option>-->
+<!--      </select>-->
+<!--      <br><br>-->
+
+<!--      <div class="box {{ classe.value }}">-->
+<!--        Texto colorido conforme valor do combobox-->
+<!--      </div>-->
+
+<!--      <div class="box" [class.success]="classe.value == 'success'">Sucesso</div>-->
+<!--      <div class="box" [class.info]="classe.value == 'info'">Informação</div>-->
+<!--      <div class="box" [class.alert]="classe.value == 'alert'">Alerta</div>-->
+<!--      <div class="box" [class.error]="classe.value == 'error'">Erro</div>-->
+
+
+<!--      <div class="box" [style.display]="classe.value == 'error' ? 'flex' : 'none'">Esse texto só aparece  caso o valor seja "Erro"</div>-->
+
+<!--    </div>-->
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h1>Event binding</h1>-->
+<!--    <div>-->
+<!--      <button class="btn" (click)="clicked()">Click me!</button>-->
+<!--      <br><br>-->
+<!--      <input type="text"-->
+<!--             (keyup)="onKeyUp($event)"-->
+<!--             (keyup.enter)="saveValue(inputField.value)"-->
+<!--             (blur)="saveValue(inputField.value)"-->
+<!--              #inputField />-->
+
+<!--      <p>Valor atual: {{currentValue}}</p>-->
+<!--      <p>Valor salvo: {{savedValue}}</p>-->
+
+<!--      <br><br>-->
+
+<!--      <span (mouseover)="onMouseOver()" [class.highlight]="isMouseOver" (mouseout)="onMouseOut()">Passe o mouse sobre esse texto</span>-->
+<!--    </div>-->
+<!--  </article>-->
+
+<!--  <article>-->
+<!--    <h1>Two-way data binding</h1>-->
+<!--    <div>-->
+<!--      <input type="text"-->
+<!--        [value]="name"-->
+<!--        (input)="name = $event.target['value']"-->
+<!--      />-->
+
+<!--      <input type="text"-->
+<!--             [ngModel]="name"-->
+<!--             (ngModelChange)="name = $event"-->
+<!--      />-->
+
+<!--      <input type="text"-->
+<!--             [(ngModel)]="name"-->
+<!--      />-->
+
+<!--      <p>Você digitou: {{name}}</p>-->
+<!--    </div>-->
+
+<!--    <div>-->
+
+<!--      <p>Meu nome é {{person.name}} e tenho {{person.age}} anos de idade.</p>-->
+
+<!--      <input type="text" [(ngModel)]="person.name">-->
+<!--      <input type="text" [(ngModel)]="person.age">-->
+<!--    </div>-->
+<!--  </article>-->
+
+  <article>
+    <h1>Input/Output Properties</h1>
+
+    <asus-course-component [courseName]="course"></asus-course-component>
+
+    <counter count="10" (countChanged)="onCountChanged($event)"></counter>
+
+  </article>
+
+</section>

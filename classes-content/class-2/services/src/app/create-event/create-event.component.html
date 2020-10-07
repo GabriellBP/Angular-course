@@ -1,0 +1,10 @@
+<h1>Testing the service instance scope</h1>
+
+<input type="text" #eventInput />
+<button (click)="onCreateEvent(eventInput.value)">Create</button>
+
+<ul>
+  <li *ngFor="let event of events">
+    {{ event }}
+  </li>
+</ul>

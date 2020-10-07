@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-examples',
@@ -23,6 +25,15 @@ export class ExamplesComponent {
   asyncValue = new Promise((resolve, reject) => {
     setTimeout(() => resolve('asynchronous value'), 3000);
   })
+
+  /* before rxjs v6.2.1:
+     asyncValue2 = Observable.interval(5000)
+      .map(res => 'asynchronous value 2');
+   */
+
+  asyncValue2 = interval(5000).pipe(
+    map(res => 'asynchronous value 2')
+  );
 
   constructor() { }
 

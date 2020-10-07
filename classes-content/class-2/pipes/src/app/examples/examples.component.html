@@ -8,3 +8,17 @@
 <p>Url: {{ book.url | lowercase }}</p>
 <br><br>
 <p>Book: {{ book | json }}</p>
+
+<h3>Books:</h3>
+
+<input [(ngModel)]="filterBook">
+<br>
+<br>
+<input #newValue>
+<button (click)="addBook(newValue.value)">Add Book</button>
+
+<ul>
+  <li *ngFor="let b of books | filterArray:filterBook">
+    {{ b }}
+  </li>
+</ul>

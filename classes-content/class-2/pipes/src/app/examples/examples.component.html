@@ -1,0 +1,45 @@
+<h2>Pipes Examples</h2>
+
+<p>Title: {{ book.title | uppercase | camelCase }}</p>
+<p>Rating: {{ book.rating | number:'1.1-2' }}</p>
+<p>Pages: {{ book.pagesNumber | number}}</p>
+<p>Price: {{ book.price | currency:'BRL':true }}</p>
+<p>Release Date: {{ book.releaseDate | date }}</p>
+<p>Url: {{ book.url | lowercase }}</p>
+<br><br>
+<p>Book: {{ book | json }}</p>
+
+<h3>Books:</h3>
+
+<input [(ngModel)]="filterBook">
+<br>
+<br>
+<input #newValue>
+<button (click)="addBook(newValue.value)">Add Book</button>
+
+<h5>Pure Pipe</h5>
+
+<ul>
+  <li *ngFor="let b of books | filterArray:filterBook">
+    {{ b }}
+  </li>
+</ul>
+
+<h5>Impure Pipe</h5>
+
+<ul>
+  <li *ngFor="let b of books | filterArrayImpure:filterBook">
+    {{ b }}
+  </li>
+</ul>
+
+<h5>Correct way to implement filter</h5>
+
+<ul>
+  <li *ngFor="let b of getBooks()">
+    {{ b }}
+  </li>
+</ul>
+
+<p>After 3 seconds: {{ asyncValue | async}}</p>
+<p>After 5 seconds: {{ asyncValue2 | async}}</p>

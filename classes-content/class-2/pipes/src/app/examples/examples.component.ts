@@ -26,4 +26,14 @@ export class ExamplesComponent {
     this.books.push(value);
     console.log(this.books);
   }
+
+  getBooks() {
+    if (this.books.length === 0 || this.filterBook === undefined || this.filterBook.trim() === '') {
+      return this.books;
+    }
+
+    return this.books.filter((v) => {
+      return v.toLowerCase().indexOf(this.filterBook.toLowerCase()) >= 0;
+    })
+  }
 }

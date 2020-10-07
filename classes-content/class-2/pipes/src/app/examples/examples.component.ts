@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ExamplesComponent {
 
   book: any = {
-    'title': 'Essencialismo',
+    'title': 'livro essencialismo',
     'rating': 4.8125,
     'pagesNumber': 272,
     'price': 33.86,

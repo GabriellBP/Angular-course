@@ -20,6 +20,10 @@ export class ExamplesComponent {
 
   books = ['Harry Potter', 'Angular essencial', 'Java'];
 
+  asyncValue = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('asynchronous value'), 3000);
+  })
+
   constructor() { }
 
   addBook(value: string) {

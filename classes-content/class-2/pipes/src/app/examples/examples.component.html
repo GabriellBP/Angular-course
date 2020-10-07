@@ -17,8 +17,18 @@
 <input #newValue>
 <button (click)="addBook(newValue.value)">Add Book</button>
 
+<h5>Pure Pipe</h5>
+
 <ul>
   <li *ngFor="let b of books | filterArray:filterBook">
+    {{ b }}
+  </li>
+</ul>
+
+<h5>Impure Pipe</h5>
+
+<ul>
+  <li *ngFor="let b of books | filterArrayImpure:filterBook">
     {{ b }}
   </li>
 </ul>

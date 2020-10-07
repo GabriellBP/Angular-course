@@ -1,6 +1,6 @@
-<h2>Pipes Example</h2>
+<h2>Pipes Examples</h2>
 
-<p>Title: {{ book.title | uppercase }}</p>
+<p>Title: {{ book.title | uppercase | camelCase }}</p>
 <p>Rating: {{ book.rating | number:'1.1-2' }}</p>
 <p>Pages: {{ book.pagesNumber | number}}</p>
 <p>Price: {{ book.price | currency:'BRL':true }}</p>

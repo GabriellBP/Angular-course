@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
+import { EventsService } from './events/events.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { EventsComponent } from './events/events.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

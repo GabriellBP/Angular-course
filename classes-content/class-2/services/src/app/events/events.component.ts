@@ -10,10 +10,11 @@ import { EventsService } from './events.service';
 export class EventsComponent implements OnInit {
 
   events: string[] = [];
-  eventsService: EventsService;
+  // eventsService: EventsService;
 
-  constructor() {
-    this.eventsService = new EventsService();
+  constructor(private eventsService: EventsService) {
+    // this.eventsService = new EventsService();
+    // this.eventsService = eventsService;
   }
 
   ngOnInit(): void {

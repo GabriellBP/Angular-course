@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
+import { EventListModule } from './event-list/event-list.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     MainContentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    EventListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

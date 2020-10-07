@@ -6,6 +6,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { CamelCasePipe } from './camel-case.pipe';
 import {registerLocaleData} from "@angular/common";
 import localePt from '@angular/common/locales/pt';
+import {SettingsService} from "./settings.service";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -19,9 +20,15 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule
   ],
   providers: [
+    // {
+    //   provide: LOCALE_ID,
+    //   useValue: 'pt-BR'
+    // }
+    SettingsService,
     {
       provide: LOCALE_ID,
-      useValue: 'pt-BR'
+      deps: [SettingsService],
+      useFactory: (settingsService) => settingsService.getLocale()
     }
   ],
   bootstrap: [AppComponent]

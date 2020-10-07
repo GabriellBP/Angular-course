@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamplesComponent {
 
+  filterBook: string;
+
   book: any = {
     'title': 'livro essencialismo',
     'rating': 4.8125,
@@ -16,6 +18,12 @@ export class ExamplesComponent {
     'url': 'https://amzn.to/2Gr52oJ'
   };
 
+  books = ['Harry Potter', 'Angular essencial', 'Java'];
+
   constructor() { }
 
+  addBook(value: string) {
+    this.books.push(value);
+    console.log(this.books);
+  }
 }

@@ -1,0 +1,6 @@
+<p>Descrição: {{ task.desc }}</p>
+<!--<p>Responsável: {{  task.personInCharge.name }}</p>-->
+<!--<p>Responsável: {{  task.personInCharge != null ? task.personInCharge.name : '' }}</p>-->
+<!--<p>Responsável: <span *ngIf="task.personInCharge">{{  task.personInCharge.name }}</span></p>-->
+<p>Responsável: {{  task.personInCharge?.name }}</p>
+

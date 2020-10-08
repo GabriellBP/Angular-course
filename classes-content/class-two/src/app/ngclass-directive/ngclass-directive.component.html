@@ -1,0 +1,8 @@
+<input [class.ok]="isPasswordCorrect" [class.error]="!isPasswordCorrect"
+       [(ngModel)]="password" (ngModelChange)="onTextChange()" type="text" />
+<br><br>
+<input [ngClass]="{
+          'ok': isPasswordCorrect,
+          'error': !isPasswordCorrect
+        }"
+       [(ngModel)]="password" (ngModelChange)="onTextChange()" type="text" />

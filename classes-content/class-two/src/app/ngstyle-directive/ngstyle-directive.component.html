@@ -1,0 +1,10 @@
+<input [style.backgroundColor]="isPasswordCorrect ? '#00E676' : '#FF3D00'"
+       [style.fontSize]="isPasswordCorrect ? '24px' : '16px'"
+       [(ngModel)]="password" (ngModelChange)="onTextChange()" type="text" />
+<br><br>
+<input  [ngStyle]="{
+          backgroundColor: isPasswordCorrect ? '#00E676' : '#FF3D00',
+          fontSize: isPasswordCorrect ? '24px' : '16px'
+        }"
+       [(ngModel)]="password" (ngModelChange)="onTextChange()" type="text" />
+

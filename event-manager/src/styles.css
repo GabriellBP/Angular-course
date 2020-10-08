@@ -4,3 +4,16 @@ body, html {
   height: 100%;
   font-family: Open Sans, sans-serif;
 }
+
+.commonButton {
+  height: 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #fff8dd;
+  color: #ffc81b;
+  padding: 0 10px;
+}
+
+.commonButton:hover {
+  cursor: pointer;
+}

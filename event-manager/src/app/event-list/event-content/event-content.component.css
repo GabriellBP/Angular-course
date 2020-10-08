@@ -1,7 +1,74 @@
 .eventContent {
   background-color: #ffffff;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px 0 0 5px;
+  min-height: 100%;
+  padding: 25px;
+}
+
+.eventContentHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title h2 {
+  margin-top: 0;
+}
+
+.title h2, h4 {
+  margin-bottom: 0;
+}
+
+.eventContentProperties {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tags {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 0 5px;
+  margin: 0 20px 0 0;
+  border-radius: 100px
+}
+
+.commentInput{
+  margin-top: 15px;
+  width: calc(100% - 15px);
+  height: 40px;
+  border: none;
+  outline: none;
   border-radius: 5px;
-  overflow-y: auto;
-  height: 100%;
+  color: #7f7f7f;
+  background-color: #eaeaea;
+  padding: 0 10px;
+}
+
+/*::placeholder {*/
+/*  color: #7f7f7f;*/
+/*}*/
+
+.commentCard {
+  width: calc(100% - 15px);
+  background-color: #f7f6f3;
+  margin: 10px 0;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentHeader h5 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.commentHeader span {
+  font-size: 10px;
+  color: #6b6a69;
+  margin-right: 5px;
 }

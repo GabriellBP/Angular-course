@@ -1,3 +1,43 @@
 <div class="eventContent">
-  <p>event-content works!</p>
+  <div class="eventContentHeader">
+    <div class="title">
+      <h2>{{ eventModel.title }}</h2>
+      <span>Criado por {{ eventModel.author }} em {{ eventModel.created | date }}</span>
+    </div>
+    <button class="commonButton">Ver página do evento</button>
+  </div>
+  <div class="eventContentProperties">
+    <div class="property">
+      <h4>DATA DO EVENTO</h4>
+      <p>{{ eventModel.eventDate | date}}</p>
+    </div>
+    <div class="property">
+      <h4>PRIORIDADE</h4>
+      <p>{{ eventModel.priority }}</p>
+    </div>
+    <div class="property">
+      <h4>TAGS</h4>
+      <span class="tags" *ngFor="let tag of eventModel.tags"
+            [ngStyle]="{'background': tag.color + '66', 'color': tag.color}">{{ tag.name | uppercase }}</span>
+    </div>
+  </div>
+  <hr>
+  <div class="eventContentDetails">
+    <h4>DETALHES DO EVENTO</h4>
+    <p>{{ eventModel.detail }}</p>
+  </div>
+  <hr>
+  <div class="eventContentCommentaries">
+    <h4>COMENTÁRIOS</h4>
+    <label>
+      <input class="commentInput" type="text" placeholder="Adicionar comentário">
+    </label>
+    <div class="commentCard" *ngFor="let comment of eventModel.comments">
+      <div class="commentHeader">
+        <h5>{{ comment.author }}</h5>
+        <span>{{ comment.created | date}}</span>
+      </div>
+      <p>{{ comment.commentary }}</p>
+    </div>
+  </div>
 </div>

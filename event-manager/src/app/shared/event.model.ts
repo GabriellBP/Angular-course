@@ -1,16 +1,17 @@
 import { CommentModel } from './comment.model';
+import { TagModel } from './tag.model';
 
 export class EventModel {
   public title: string;
   public detail: string;
   public author: string; // for now
-  public tags: string[]; // for now
+  public tags: TagModel[]; // for now
   public created: Date;
   public priority: number;
   public eventDate: Date;
   public comments: CommentModel[];
 
-  constructor(title: string, detail: string, author: string, tags: string[],
+  constructor(title: string, detail: string, author: string, tags: TagModel[],
               created: Date, priority: number, eventDate: Date, comments: CommentModel[]) {
     this.title = title;
     this.detail = detail;

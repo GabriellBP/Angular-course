@@ -11,10 +11,18 @@ export class EventListComponent implements OnInit {
 
   nextEvents: EventModel[];
 
+  chosenEvent: any;
+
   constructor(private eventListService: EventListService) { }
 
   ngOnInit(): void {
     this.nextEvents = this.eventListService.getNextEvents();
   }
 
+  choseEvent(idx: number, eventModel: EventModel): void {
+    this.chosenEvent = {
+      index: idx,
+      event: eventModel
+    };
+  }
 }

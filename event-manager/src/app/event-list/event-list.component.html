@@ -5,17 +5,21 @@
       <button class="commonButton">+ Novo</button>
     </div>
     <div class="nextEventsContent">
-      <div class="eventCard" *ngFor="let eventModel of nextEvents">
-        <span>{{ eventModel.eventDate }}</span>
+      <div class="eventCard" *ngFor="let eventModel of nextEvents; index as idx"
+           (click)="choseEvent(idx, eventModel)"
+           [class.chosenEvent]="chosenEvent != undefined && idx == chosenEvent.index">
+        <span>{{ eventModel.eventDate | date }}</span>
         <p>{{ eventModel.title }}</p>
-        <div class="tags">
-          <span *ngFor="let tag of eventModel.tags">{{ tag }}</span>
+        <div>
+          <span class="tags" *ngFor="let tag of eventModel.tags"
+                [ngStyle]="{'background': tag.color + '66', 'color': tag.color}">{{ tag.name | uppercase }}</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="eventContent">
-    <app-event-content></app-event-content>
+  <div class="eventContentBox">
+    <div *ngIf="chosenEvent == undefined" class="emptyBox"><p>Clique em algum Evento!</p></div>
+    <app-event-content *ngIf="chosenEvent != undefined" [eventModel]="chosenEvent.event"></app-event-content>
   </div>
 </div>

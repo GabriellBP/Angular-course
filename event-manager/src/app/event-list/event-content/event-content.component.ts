@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import {EventModel} from '../../shared/event.model';
 
 @Component({
   selector: 'app-event-content',
   templateUrl: './event-content.component.html',
   styleUrls: ['./event-content.component.css']
 })
-export class EventContentComponent implements OnInit {
+export class EventContentComponent implements OnChanges {
+
+  @Input() eventModel: EventModel;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    console.log(this.eventModel.title);
   }
 
 }

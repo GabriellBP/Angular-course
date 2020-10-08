@@ -1,0 +1,68 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.nextEvents {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 25px;
+  width: 500px;
+  overflow-y: auto;
+}
+
+.nextEventsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nextEventsHeader h2 {
+  margin-top: 0;
+}
+
+.eventContentBox {
+  height: 100%;
+  overflow-y: auto;
+  flex: 1;
+  margin-left: 15px;
+}
+
+.emptyBox {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eventCard {
+  background-color: #f7f6f3;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.eventCard:hover {
+  cursor: pointer;
+  background-color: #fff8dd;
+  opacity: 0.8;
+}
+
+.chosenEvent {
+  background-color: #fff8dd;
+  opacity: 1;
+}
+
+.eventCard p {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tags {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 0 5px;
+  margin: 0 10px;
+  border-radius: 100px
+}

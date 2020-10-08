@@ -1,0 +1,25 @@
+<div class="contentWrapper">
+  <div class="nextEvents">
+    <div class="nextEventsHeader">
+      <h2>Próximos eventos</h2>
+      <button class="commonButton">+ Novo</button>
+    </div>
+    <div class="nextEventsContent">
+      <div class="eventCard" *ngFor="let eventModel of nextEvents; index as idx"
+           (click)="choseEvent(idx, eventModel)"
+           [class.chosenEvent]="chosenEvent != undefined && idx == chosenEvent.index">
+        <span>{{ eventModel.eventDate | date }}</span>
+        <p>{{ eventModel.title }}</p>
+        <div>
+          <span class="tags" *ngFor="let tag of eventModel.tags"
+                [ngStyle]="{'background': tag.color + '66', 'color': tag.color}">{{ tag.name | uppercase }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eventContentBox">
+    <div *ngIf="chosenEvent == undefined" class="emptyBox"><p>Clique em algum Evento!</p></div>
+    <app-event-content *ngIf="chosenEvent != undefined" [eventModel]="chosenEvent.event"></app-event-content>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Student} from "../students/student.model";
 
 @Injectable({
@@ -19,7 +19,10 @@ export class StudentsService {
   }
 
   getStudentById(id): Student {
-    return this.students.find(s => s.id == id);
+    let foundStudent =  this.students.find(s => s.id == id);
+    if (!foundStudent)
+      return new Student(null, "", "");
+    return new Student(foundStudent.id, foundStudent.name, foundStudent.registration);
   }
 
   private static buildDefaultStudents() {
@@ -37,6 +40,7 @@ export class StudentsService {
   }
 
   updateStudent(student: Student) {
-
+    let pos = this.students.findIndex(s => s.id == student.id);
+    this.students[pos] = student;
   }
 }

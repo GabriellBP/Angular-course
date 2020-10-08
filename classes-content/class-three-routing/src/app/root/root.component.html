@@ -1,0 +1,9 @@
+<div class="navbar">
+  <a routerLinkActive="active" routerLink="/home">Home</a>
+  <a routerLinkActive="active" routerLink="/courses">Cursos</a>
+  <a routerLinkActive="active" [routerLink]="['students']">Alunos</a>
+  <a (click)="logout()">Logout</a>
+</div>
+<div class="wrapper">
+  <router-outlet></router-outlet>
+</div>

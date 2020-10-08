@@ -16,8 +16,7 @@ import {StudentsModule} from "./students/students.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    StudentsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

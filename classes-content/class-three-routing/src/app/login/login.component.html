@@ -1,1 +1,8 @@
-<p>login works!</p>
+<div class="login-box">
+  <h1>Login no sistema</h1>
+  <p class="error" [hidden]="!error">Usuário ou senha incorretos</p>
+  <p>Usuário:</p><input [(ngModel)]="username"/>
+  <p>Senha:</p><input type="password" [(ngModel)]="password"/>
+  <div><button (click)="doLogin()">Entrar</button></div>
+
+</div>

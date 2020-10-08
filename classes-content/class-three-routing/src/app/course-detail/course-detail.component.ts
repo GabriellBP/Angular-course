@@ -11,7 +11,10 @@ export class CourseDetailComponent implements OnInit {
   courseId: string;
 
   constructor(private route: ActivatedRoute) {
-    this.courseId = route.snapshot.params['id'];
+    // this.courseId = route.snapshot.params['id'];
+    route.params.subscribe((params) => {
+      this.courseId = params['id'];
+    })
   }
 
   ngOnInit(): void {

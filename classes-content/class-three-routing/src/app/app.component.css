@@ -1,7 +1,9 @@
 .navbar {
   height: 80px;
+  position: fixed;
   background: #e0e0e0;
   box-shadow: 0 0 2px #464646;
+  width: 100%;
 }
 
 .navbar a {
@@ -28,3 +30,14 @@
 .navbar a.active {
   color: #E040FB;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80px;
+  bottom: 0;
+}
+

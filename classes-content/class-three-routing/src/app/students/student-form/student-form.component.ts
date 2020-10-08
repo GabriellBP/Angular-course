@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Student} from "../student.model";
+import {ActivatedRoute} from "@angular/router";
+import {StudentsService} from "../students.service";
 
 @Component({
   selector: 'app-student-form',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  constructor() { }
+  action: string;
+  student: Student;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private studentService: StudentsService) {
+
+    this.student = new Student(null, "", "");
+
+    // memory leak
+    route.queryParams.subscribe((params) => {
+      this.action = params['action'];
+    })
+
+    route.params.subscribe((params) => {
+      if (params['id']) {
+        this.student = this.studentService.getStudentById(params['id']);
+      }
+    })
   }
 
+  ngOnInit(): void {
+
+  }
+
+
+  save() {
+    if (this.action == 'CREATE')
+      this.studentService.createStudent(this.student);
+    else
+      this.studentService.updateStudent(this.student);
+  }
 }

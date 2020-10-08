@@ -1,1 +1,8 @@
-<p>student-form works!</p>
+<p>{{action | humanReadableAction }} um estudante</p>
+
+<p>Nome:</p>
+<input [(ngModel)]="student.name"/>
+<p>Matrícula:</p>
+<input [(ngModel)]="student.registration">
+
+<p><button (click)="save()">Salvar</button></p>

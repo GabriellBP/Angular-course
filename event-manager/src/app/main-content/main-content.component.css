@@ -5,7 +5,7 @@
 }
 
 .mainContentHeader {
-  height: 120px;
+  height: 150px;
   display: flex;
   align-items: center;
   font-size: 32px;
@@ -14,9 +14,8 @@
 }
 
 .sectionWrapper {
-  display: flex;
   flex: 1;
   background-color: #EEEBE5;
-  align-items: center;
-  justify-content: center;
+  height: calc(100% - 150px);
+  padding: 25px 15px 15px 25px;
 }

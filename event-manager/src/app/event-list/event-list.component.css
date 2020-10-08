@@ -1,0 +1,33 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.nextEvents {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 25px;
+  width: 500px;
+  overflow-y: auto;
+}
+
+.nextEventsHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nextEventsContent {
+
+}
+
+.eventContent {
+  height: 100%;
+  overflow-y: auto;
+  flex: 1;
+  margin-left: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+}

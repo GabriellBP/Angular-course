@@ -1,5 +1,21 @@
-<p>event-list works!</p>
+<div class="contentWrapper">
+  <div class="nextEvents">
+    <div class="nextEventsHeader">
+      <h2>Próximos eventos</h2>
+      <button class="commonButton">+ Novo</button>
+    </div>
+    <div class="nextEventsContent">
+      <div class="eventCard" *ngFor="let eventModel of nextEvents">
+        <span>{{ eventModel.eventDate }}</span>
+        <p>{{ eventModel.title }}</p>
+        <div class="tags">
+          <span *ngFor="let tag of eventModel.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <app-event-content></app-event-content>
+  <div class="eventContent">
+    <app-event-content></app-event-content>
+  </div>
 </div>

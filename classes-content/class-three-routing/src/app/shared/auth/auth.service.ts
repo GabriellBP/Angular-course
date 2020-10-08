@@ -17,10 +17,13 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  doLogin(username, password) {
+  doLogin(username, password, returnUrl) {
     if (username == 'asus' && password == '123456') {
       this.isLoggedIn = true;
-      this.router.navigate(['/home']);
+      if (!returnUrl)
+        this.router.navigate(['/home']);
+      else
+        this.router.navigateByUrl(returnUrl);
       return true;
     }
     return false;

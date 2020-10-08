@@ -5,6 +5,7 @@ import {RootModule} from "./root/root.module";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: '**', redirectTo: 'login', pathMatch: "full"}
 ];
 
 @NgModule({

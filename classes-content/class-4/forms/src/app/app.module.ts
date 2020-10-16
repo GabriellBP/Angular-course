@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
+import { EventService } from './shared/event.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

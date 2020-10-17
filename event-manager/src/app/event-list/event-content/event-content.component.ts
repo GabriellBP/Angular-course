@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import {EventModel} from '../../shared/event.model';
+import {EventListService} from '../event-list.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-event-content',
@@ -8,9 +10,13 @@ import {EventModel} from '../../shared/event.model';
 })
 export class EventContentComponent implements OnChanges {
 
-  @Input() eventModel: EventModel;
+  eventModel: EventModel;
 
-  constructor() { }
+  constructor(private eventService: EventListService, private route: ActivatedRoute) {
+    route.params.subscribe((params) => {
+      this.eventModel = eventService.getEventById(parseInt(params['id']));
+    });
+  }
 
   ngOnChanges(): void {
     console.log(this.eventModel.title);

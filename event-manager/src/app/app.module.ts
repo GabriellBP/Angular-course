@@ -8,19 +8,23 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { EventListModule } from './event-list/event-list.module';
 import {registerLocaleData} from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {EventsRoutingModule} from './events/events-routing.module';
+import {EventsModule} from './events/events.module';
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
-    SidebarComponent,
-    MainContentComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    EventListModule
+    AppRoutingModule,
+    EventsModule,
+    EventListModule,
   ],
   providers: [
     {

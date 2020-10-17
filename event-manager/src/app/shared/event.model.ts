@@ -2,6 +2,7 @@ import { CommentModel } from './comment.model';
 import { TagModel } from './tag.model';
 
 export class EventModel {
+  public id: number;
   public title: string;
   public detail: string;
   public author: string; // for now
@@ -11,8 +12,9 @@ export class EventModel {
   public eventDate: Date;
   public comments: CommentModel[];
 
-  constructor(title: string, detail: string, author: string, tags: TagModel[],
+  constructor(id: number, title: string, detail: string, author: string, tags: TagModel[],
               created: Date, priority: number, eventDate: Date, comments: CommentModel[]) {
+    this.id = id;
     this.title = title;
     this.detail = detail;
     this.author = author;

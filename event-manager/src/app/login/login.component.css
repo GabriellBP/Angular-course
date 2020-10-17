@@ -13,3 +13,19 @@
   background-color: #fff;
   border-radius: 8px;
 }
+
+.title {
+  padding: 40px 0;
+  text-align: center;
+  margin: 0 32px;
+  border-bottom: 1px solid #ECECEC;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.buttonHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

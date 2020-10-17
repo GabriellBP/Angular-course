@@ -6,14 +6,45 @@ body, html {
 }
 
 .commonButton {
-  height: 20px;
   border: none;
   border-radius: 25px;
   background-color: #fff8dd;
   color: #ffc81b;
   padding: 0 10px;
+  font-weight: bold;
+}
+
+.commonButton.big {
+  padding: 15px 100px;
 }
 
 .commonButton:hover {
   cursor: pointer;
+}
+
+.commonInput {
+  margin-top: 15px;
+  width: calc(100% - 15px);
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: #7f7f7f;
+  background-color: #eaeaea;
+  padding: 0 10px;
+}
+
+.commonForm {
+  padding: 32px
+}
+
+.commonForm .commonInput {
+  background-color: #F7F6F3;
+  height: 50px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.commonForm label {
+  font-weight: bold;
+  font-size: 15px;
 }

@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { EventService } from './shared/event.service';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { EventService } from './shared/event.service';
     TemplateDrivenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [EventService],
   bootstrap: [AppComponent]

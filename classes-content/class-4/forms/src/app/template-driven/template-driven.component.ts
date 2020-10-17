@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventService} from '../shared/event.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-template-driven',
@@ -8,14 +9,17 @@ import {EventService} from '../shared/event.service';
 })
 export class TemplateDrivenComponent implements OnInit {
 
-  status: string[] = [];
+  stts: string[] = [];
 
   constructor(private eventService: EventService) {
-    this.status = eventService.status;
+    this.stts = eventService.status;
   }
 
   ngOnInit(): void {
-    console.log(this.status);
+    console.log(this.stts);
   }
 
+  onSubmit(f: NgForm): void {
+    console.log(f);
+  }
 }

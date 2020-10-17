@@ -1,25 +1,25 @@
 <div class="formWrapper">
   <h2>Cadastrar Evento</h2>
-  <form>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
       <label for="title">Título</label>
-      <input type="text" class="form-input" id="title" placeholder="Evento..">
+      <input type="text" class="form-input" id="title" placeholder="Evento.." name="title" ngModel>
     </div>
 
     <div class="form-group">
       <label for="description">Descrição</label>
-      <textarea class="form-input" id="description" placeholder="Descrição do evento..."></textarea>
+      <textarea class="form-input" id="description" placeholder="Descrição do evento..." name="description" ngModel></textarea>
     </div>
 
     <div class="form-group">
       <label for="priority">Prioridade</label>
-      <input type="number" class="form-input" id="priority" placeholder="0">
+      <input type="number" class="form-input" id="priority" placeholder="0" name="priority" ngModel>
     </div>
 
     <div class="form-group">
       <label for="status">Status</label>
-      <select class="form-input" id="status">
-        <option *ngFor="let s of status" [value]="s">{{s}}</option>
+      <select class="form-input" id="status" name="status" ngModel>
+        <option *ngFor="let s of stts" [value]="s">{{s}}</option>
       </select>
     </div>
 

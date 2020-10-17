@@ -1,0 +1,13 @@
+{
+  "courses": [
+    { "id": 1, "name": "Angular" },
+    { "id": 2, "name": "Django" },
+    { "id": 3, "name": "React" }
+  ],
+  "students": [
+    { "id": 1, "name": "Angular", "registration": "4884984598" },
+    { "id": 2, "name": "Gabriel",  "registration": "9348329048" },
+    { "id": 3, "name": "Gleysson", "registration": "39439458" },
+    { "id": 4, "name": "Vigia", "registration": "3457686566" }
+  ]
+}

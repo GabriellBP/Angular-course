@@ -3,6 +3,7 @@ import {Course} from "./course.model";
 import { HttpClient } from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,13 @@ export class CoursesService {
 
   constructor(private http: HttpClient) {  }
 
-  getCourses() {
+  getCourses(): Observable<Course[]>{
     return this.http.get<Course[]>(this.API)
       .pipe(tap(console.log));
   }
 
-  // getCourseById(id): Course {
-  //   return this.courses.find(c => c.id == id);
-  // }
+  getCourseById(id): Observable<Course> {
+    return this.http.get<Course>(`${this.API}/${id}`)
+      .pipe(tap(console.log));
+  }
 }

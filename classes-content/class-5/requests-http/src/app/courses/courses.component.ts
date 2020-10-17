@@ -22,6 +22,6 @@ export class CoursesComponent implements OnInit {
   }
 
   navigateToCourse(course: Course) {
-    // this.router.navigate(['/courses', course.id]);
+    this.router.navigate(['/courses', course.id]);
   }
 }

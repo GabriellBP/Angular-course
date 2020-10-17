@@ -5,17 +5,16 @@
 }
 
 .mainContentHeader {
-  height: 150px;
   display: flex;
   align-items: center;
   font-size: 32px;
-  padding-left: 32px;
+  padding: 32px;
   font-weight: bold;
 }
 
 .sectionWrapper {
   flex: 1;
   background-color: #EEEBE5;
-  height: calc(100% - 150px);
   padding: 25px 15px 5px 25px;
+  min-height: 0;
 }

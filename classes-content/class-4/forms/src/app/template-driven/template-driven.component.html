@@ -3,27 +3,33 @@
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <div class="form-group">
       <label for="title">Título</label>
-      <input type="text" class="form-input" id="title" placeholder="Evento.." name="title" [(ngModel)]="eventModel.title" required>
+      <input type="text" class="form-input" id="title" placeholder="Evento.." name="title"
+             [(ngModel)]="eventModel.title" required #title="ngModel">
+      <p class="invalidInputState" *ngIf="title.invalid && title.touched">Título Inválido!</p>
     </div>
 
     <div class="form-group">
       <label for="description">Descrição</label>
       <textarea class="form-input" id="description" placeholder="Descrição do evento..." name="description"
-                [(ngModel)]="eventModel.description" required></textarea>
+                [(ngModel)]="eventModel.description" required #description="ngModel"></textarea>
+      <p class="invalidInputState" *ngIf="description.invalid && description.touched">Descrição Inválida!</p>
     </div>
 
     <div class="form-group">
       <label for="priority">Prioridade</label>
-      <input type="number" class="form-input" id="priority" placeholder="0" name="priority" [(ngModel)]="eventModel.priority" required>
+      <input type="number" class="form-input" id="priority" placeholder="0" name="priority"
+             [(ngModel)]="eventModel.priority" required min=0 max=5 #priority="ngModel">
+      <p class="invalidInputState" *ngIf="priority.invalid && priority.touched">Prioridade selecionada Inválida!</p>
     </div>
 
     <div class="form-group">
       <label for="status">Status</label>
-      <select class="form-input" id="status" name="status" [(ngModel)]="eventModel.status" required>
+      <select class="form-input" id="status" name="status" [(ngModel)]="eventModel.status" required #status="ngModel">
         <option *ngFor="let s of stts" [value]="s">{{s}}</option>
       </select>
+      <p class="invalidInputState" *ngIf="status.invalid && status.touched">Status Inválido!</p>
     </div>
 
-    <button type="submit" class="btn-submit">Cadastrar</button>
+    <button type="submit" class="btn-submit" [disabled]="f.invalid">Cadastrar</button>
   </form>
 </div>

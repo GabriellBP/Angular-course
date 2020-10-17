@@ -2,7 +2,6 @@
   display: flex;
   background-color: white;
   width: 500px;
-  height: 500px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   flex-direction: column;
@@ -19,7 +18,7 @@ form {
 }
 
 .form-group {
-  padding: 15px;
+  padding: 10px 15px
 }
 
 .form-group label {
@@ -70,4 +69,11 @@ select:hover {
 /* css class to form validation */
 .ng-invalid.ng-touched:not(form) {
   border: 1px solid red !important;
+}
+
+.invalidInputState {
+  margin: 1px;
+  font-size: 15px;
+  color: red;
+  text-align: end;
 }

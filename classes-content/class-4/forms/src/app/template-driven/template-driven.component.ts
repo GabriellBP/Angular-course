@@ -21,7 +21,8 @@ export class TemplateDrivenComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.stts);
 
-    this.eventModel = new EventModel('Meu Evento', 'Descrição do meu evento', this.stts[0], 5);
+    // this.eventModel = new EventModel('Meu Evento', 'Descrição do meu evento', this.stts[0], 5);
+    this.eventModel = new EventModel();
   }
 
   onSubmit(f: NgForm): void {

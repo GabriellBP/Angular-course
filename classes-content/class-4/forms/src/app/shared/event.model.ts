@@ -4,7 +4,7 @@ export class EventModel {
   public status: string;
   public priority: number;
 
-  constructor(title: string, description: string, status: string, priority: number) {
+  constructor(title?: string, description?: string, status?: string, priority?: number) {
     this.title = title;
     this.description = description;
     this.status = status;

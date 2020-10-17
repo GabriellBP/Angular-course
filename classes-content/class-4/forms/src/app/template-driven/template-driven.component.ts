@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventService} from '../shared/event.service';
 
 @Component({
   selector: 'app-template-driven',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenComponent implements OnInit {
 
-  constructor() { }
+  status: string[] = [];
+
+  constructor(private eventService: EventService) {
+    this.status = eventService.status;
+  }
 
   ngOnInit(): void {
+    console.log(this.status);
   }
 
 }

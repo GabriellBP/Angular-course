@@ -23,8 +23,7 @@ registerLocaleData(localePt, 'pt-BR');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EventsModule,
-    EventListModule,
+    EventsModule
   ],
   providers: [
     {

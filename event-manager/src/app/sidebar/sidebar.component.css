@@ -7,3 +7,29 @@
 .star {
   font-size: 20px;
 }
+
+.sidebarUserInfo {
+  background-color: #202020;
+  height: 75px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.greetingText {
+  padding: 24px;
+  font-size: 13px;
+}
+
+.boxLinks {
+  padding: 12px;
+}
+
+.boxLinks a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -6,7 +6,8 @@ import {EventListModule} from '../event-list/event-list.module';
 
 const routes: Routes = [
   {path: '', component: EventsComponent, children: [
-      {path: 'events', loadChildren: () => EventListModule}
+      {path: 'events', loadChildren: () => EventListModule},
+      {path: '', redirectTo: 'events', pathMatch: 'full'}
     ]}
 ];
 

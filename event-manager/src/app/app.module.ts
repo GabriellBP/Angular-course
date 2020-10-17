@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {EventsRoutingModule} from './events/events-routing.module';
 import {EventsModule} from './events/events.module';
+import {FormsModule} from '@angular/forms';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -23,7 +24,8 @@ registerLocaleData(localePt, 'pt-BR');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    EventsModule
+    EventsModule,
+    FormsModule
   ],
   providers: [
     {

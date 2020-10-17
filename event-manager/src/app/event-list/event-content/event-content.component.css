@@ -9,10 +9,13 @@
 .eventContentHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .title h2 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .title h2, h4 {

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventService} from '../shared/event.service';
-import { NgForm } from '@angular/forms';
+import {NgForm} from '@angular/forms';
+import {EventModel} from '../shared/event.model';
 
 @Component({
   selector: 'app-template-driven',
@@ -11,15 +12,21 @@ export class TemplateDrivenComponent implements OnInit {
 
   stts: string[] = [];
 
+  eventModel: EventModel;
+
   constructor(private eventService: EventService) {
     this.stts = eventService.status;
   }
 
   ngOnInit(): void {
-    console.log(this.stts);
+    // console.log(this.stts);
+
+    this.eventModel = new EventModel('Meu Evento', 'Descrição do meu evento', this.stts[0], 5);
   }
 
   onSubmit(f: NgForm): void {
-    console.log(f);
+    console.log(f.value);
+
+    console.log(this.eventModel);
   }
 }

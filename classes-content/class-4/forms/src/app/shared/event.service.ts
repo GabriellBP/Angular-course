@@ -11,10 +11,13 @@ export class EventService {
 
   constructor() { }
 
-  createEvent(title: string, description: string, status: string, priority: number): EventModel {
+  createEvent(title: string, description: string, status: string, priority: number): void {
       const eventModel = new EventModel(title, description, status, priority);
 
       this.events.push(eventModel);
-      return eventModel;
+  }
+
+  getEvents(): void {
+    console.log(this.events);
   }
 }

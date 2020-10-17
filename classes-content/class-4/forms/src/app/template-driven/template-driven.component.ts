@@ -26,8 +26,11 @@ export class TemplateDrivenComponent implements OnInit {
   }
 
   onSubmit(f: NgForm): void {
-    console.log(f.value);
+    // console.log(f.value);
+    // console.log(this.eventModel);
 
-    console.log(this.eventModel);
+    this.eventService.createEvent(this.eventModel.title, this.eventModel.description, this.eventModel.status, this.eventModel.priority);
+    this.eventService.getEvents();
+    f.resetForm();
   }
 }

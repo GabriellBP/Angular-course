@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CoursesService} from "./courses.service";
 import {Course} from "./course.model";
 import {Router} from "@angular/router";
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses',
@@ -15,10 +16,12 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getCourses();
+    this.coursesService.getCourses()
+      .pipe(take(1)) // unsubscribe after one try
+      .subscribe(data => this.courses = data);
   }
 
   navigateToCourse(course: Course) {
-    this.router.navigate(['/courses', course.id]);
+    // this.router.navigate(['/courses', course.id]);
   }
 }

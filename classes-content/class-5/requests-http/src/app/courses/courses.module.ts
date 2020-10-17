@@ -4,6 +4,7 @@ import {CoursesComponent} from "./courses.component";
 import {CourseDetailComponent} from "./course-detail/course-detail.component";
 import {CoursesService} from "./courses.service";
 import {CoursesRoutingModule} from "./courses-routing.module";
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -11,7 +12,8 @@ import {CoursesRoutingModule} from "./courses-routing.module";
   declarations: [CoursesComponent, CourseDetailComponent],
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    HttpClientModule
   ],
   providers: [CoursesService]
 })

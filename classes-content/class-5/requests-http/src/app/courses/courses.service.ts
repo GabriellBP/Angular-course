@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
 import {Course} from "./course.model";
+import { HttpClient } from '@angular/common/http';
+import {tap} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  courses: Course[];
+  private readonly API = `${environment.API}courses`;
 
 
-  constructor() {
-    this.courses = CoursesService.buildDefaultCourses();
-  }
+  constructor(private http: HttpClient) {  }
 
   getCourses() {
-    return this.courses;
+    return this.http.get<Course[]>(this.API)
+      .pipe(tap(console.log));
   }
 
-  getCourseById(id): Course {
-    return this.courses.find(c => c.id == id);
-  }
-
-  private static buildDefaultCourses() {
-    let courses = [];
-    courses.push(new Course(1,'Angular'));
-    courses.push(new Course(2,'Django'));
-    courses.push(new Course(3,'React'));
-    return courses;
-  }
+  // getCourseById(id): Course {
+  //   return this.courses.find(c => c.id == id);
+  // }
 }

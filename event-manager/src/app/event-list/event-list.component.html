@@ -2,7 +2,7 @@
   <div class="nextEvents">
     <div class="nextEventsHeader">
       <h2>Próximos eventos</h2>
-      <button class="commonButton">+ Novo</button>
+      <button (click)="newEvent()" class="commonButton">+ Novo</button>
     </div>
     <div class="nextEventsContent">
       <div class="eventCard" *ngFor="let eventModel of nextEvents; index as idx"

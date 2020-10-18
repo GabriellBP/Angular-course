@@ -1,0 +1,27 @@
+<form class="eventForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label class="commonLabel">Título</label>
+  <input type="text" class="commonInput lighter" placeholder="Evento.."
+         formControlName="title">
+  <p class="invalidInputState" *ngIf="title.invalid && title.touched">Título Inválido!</p>
+  <p class="invalidInputState" *ngIf="title.pending">Consultando...</p>
+
+  <label class="commonLabel">Descrição/Detalhes</label>
+  <textarea class="commonInput lighter descriptionBox" placeholder="Descrição do evento..."
+            formControlName="detail"></textarea>
+
+  <label class="commonLabel">Data do evento</label>
+  <input type="date" class="commonInput lighter"
+         formControlName="date">
+
+  <label class="commonLabel">Prioridade</label>
+  <select class="commonInput lighter" formControlName="priority">
+    <option *ngFor="let p of priorities" [value]="p.value">{{p.text}}</option>
+  </select>
+  <p class="invalidInputState" *ngIf="priority.invalid && priority.touched">Favor selecionar a prioridade!</p>
+
+
+
+  <div class="buttonHolder">
+    <button type="submit" [disabled]="form.invalid || form.pending" class="commonButton big">Salvar</button>
+  </div>
+</form>

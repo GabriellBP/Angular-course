@@ -23,4 +23,8 @@ export class EventListComponent implements OnInit {
   choseEvent(idx: number, eventModel: EventModel): void {
     this.router.navigate(['/events', idx]);
   }
+
+  newEvent() {
+    this.router.navigate(['events', 'new']);
+  }
 }

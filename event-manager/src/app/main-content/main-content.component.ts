@@ -13,7 +13,13 @@ export class MainContentComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.title = this.route.firstChild.snapshot.data['name'];
+        let child = this.route.firstChild;
+        let parent = this.route;
+        while (child != null) {
+          parent = child;
+          child = child.firstChild;
+        }
+        this.title = parent.snapshot.data['name'];
       }
     })
   }

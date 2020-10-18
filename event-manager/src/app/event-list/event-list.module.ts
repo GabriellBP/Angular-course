@@ -5,19 +5,23 @@ import { EventListComponent } from './event-list.component';
 import { EventContentComponent } from './event-content/event-content.component';
 import { EventListService } from './event-list.service';
 import {EventListRoutingModule} from './event-list-routing.module';
+import { NewEventComponent } from './new-event/new-event.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
     EventListComponent,
-    EventContentComponent
+    EventContentComponent,
+    NewEventComponent
   ],
   exports: [EventListComponent],
   providers: [EventListService],
   imports: [
     CommonModule,
-    EventListRoutingModule
+    EventListRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EventListModule { }

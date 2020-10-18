@@ -34,6 +34,10 @@ body, html {
   padding: 0 10px;
 }
 
+.commonInput.lighter {
+  background-color: #F7F6F3;
+}
+
 .commonForm {
   padding: 32px
 }
@@ -44,7 +48,12 @@ body, html {
   margin-top: 5px;
   margin-bottom: 20px;
 }
-.commonForm label {
+.commonLabel {
   font-weight: bold;
   font-size: 15px;
+  display: inline-block;
+}
+
+.commonLabel:not(:first-child) {
+  margin-top: 30px;
 }

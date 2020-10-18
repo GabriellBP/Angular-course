@@ -5,12 +5,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { EventService } from './shared/event.service';
+import {ReactiveFormComponent} from "./reactive/reactive-form.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenComponent
+    TemplateDrivenComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,

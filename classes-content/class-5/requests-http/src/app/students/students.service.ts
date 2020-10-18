@@ -3,7 +3,7 @@ import {Student} from './student.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {catchError, take} from 'rxjs/operators';
 
 @Injectable()
 export class StudentsService {
@@ -28,9 +28,8 @@ export class StudentsService {
     return this.http.get<Student>(`${this.API}/${id}`);
   }
 
-  createStudent(student: Student) {
-    student.id = this.currentId++;
-    this.students.push(student);
+  createStudent(student: Student): Observable<Student> {
+    return this.http.post<Student>(this.API, student).pipe(take(1));
   }
 
   updateStudent(student: Student) {

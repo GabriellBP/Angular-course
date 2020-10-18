@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 import {Student} from "../student.model";
 import {StudentsService} from "../students.service";
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-detail',
@@ -16,7 +17,7 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private studentService: StudentsService, private router: Router) {
     this.subscription = route.params.subscribe((params) => {
-      studentService.getStudentById(params.id).subscribe(data => this.student = data);
+      studentService.getStudentById(params.id).pipe(take(1)).subscribe(data => this.student = data);
     });
   }
 

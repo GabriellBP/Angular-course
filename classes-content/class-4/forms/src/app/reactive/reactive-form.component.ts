@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventService} from '../shared/event.service';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {EventModel} from '../shared/event.model';
+import {NameAvailableValidator} from "../shared/name-available.validator";
 
 @Component({
   selector: 'app-reactive-form',
@@ -16,14 +17,14 @@ export class ReactiveFormComponent implements OnInit {
 
   stts: string[] = [];
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private nameAvailableValidator: NameAvailableValidator) {
     this.stts = eventService.status;
   }
 
   ngOnInit(): void {
     this.eventModel = new EventModel();
     this.form = new FormGroup({
-      title: new FormControl(this.eventModel.title, Validators.required),
+      title: new FormControl(this.eventModel.title, Validators.required, this.nameAvailableValidator.validate.bind(this)),
       description: new FormControl(this.eventModel.description, Validators.required),
       priority: new FormControl(this.eventModel.priority, [Validators.required, Validators.min(0), Validators.max(5)]),
       status: new FormControl(this.eventModel.status, Validators.required)

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { EventModel } from './event.model';
+import {Observable, Observer} from "rxjs";
 
 @Injectable()
 export class EventService {
@@ -19,5 +20,14 @@ export class EventService {
 
   getEvents(): void {
     console.log(this.events);
+  }
+
+  isNameAvailable(title): Observable<boolean> {
+    return new Observable((observer: Observer<boolean>) => {
+      setTimeout(() => {
+        observer.next(this.events.findIndex(e => e.title != title) == -1)
+        observer.complete();
+      }, 3000);
+    })
   }
 }

@@ -17,4 +17,5 @@
   background-color: #EEEBE5;
   padding: 25px 15px 5px 25px;
   min-height: 0;
+  overflow-y: auto;
 }

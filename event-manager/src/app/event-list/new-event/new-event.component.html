@@ -2,26 +2,34 @@
   <label class="commonLabel">Título</label>
   <input type="text" class="commonInput lighter" placeholder="Evento.."
          formControlName="title">
-  <p class="invalidInputState" *ngIf="title.invalid && title.touched">Título Inválido!</p>
+  <p class="invalidInputState" *ngIf="title.invalid && title.touched">Título inválido!</p>
   <p class="invalidInputState" *ngIf="title.pending">Consultando...</p>
 
   <label class="commonLabel">Descrição/Detalhes</label>
   <textarea class="commonInput lighter descriptionBox" placeholder="Descrição do evento..."
             formControlName="detail"></textarea>
+  <p class="invalidInputState" *ngIf="detail.invalid && detail.touched">Descrição/Detalhe não preenchidos!</p>
 
   <label class="commonLabel">Data do evento</label>
   <input type="date" class="commonInput lighter"
          formControlName="date">
+  <p class="invalidInputState" *ngIf="date.invalid && date.touched">Data não preenchida!</p>
 
   <label class="commonLabel">Prioridade</label>
   <select class="commonInput lighter" formControlName="priority">
     <option *ngFor="let p of priorities" [value]="p.value">{{p.text}}</option>
   </select>
-  <p class="invalidInputState" *ngIf="priority.invalid && priority.touched">Favor selecionar a prioridade!</p>
+
+  <label class="commonLabel">Tags</label>
+  <div formGroupName="tags" class="tagsGroup">
+    <label  *ngFor="let tag of form.get('tags').value | keyvalue">
+      <input type="checkbox" [formControlName]="tag.key" [value]="tag.value" /> {{ tag.key }}
+    </label>
+  </div>
+  <p class="invalidInputState" *ngIf="tags.invalid && tags.touched">Favor selecionar ao menos uma tag!</p>
 
 
-
-  <div class="buttonHolder">
+  <div class="buttonHolder newEventButton" [class.btnFormInvalid]="form.invalid">
     <button type="submit" [disabled]="form.invalid || form.pending" class="commonButton big">Salvar</button>
   </div>
 </form>

@@ -1,6 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {TagsService} from "../../tags/tags.service";
+
+
+function tagsValidator(): ValidatorFn {
+  return (formGroup: FormGroup): ValidationErrors | null => {
+    let checked = false;
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = formGroup.controls[key];
+      if (control.value) {
+        checked = true;
+      }
+    });
+    if (checked)
+      return null;
+    else
+      return {'minTags': true};
+  }
+}
 
 @Component({
   selector: 'app-new-event',
@@ -20,15 +37,14 @@ export class NewEventComponent implements OnInit {
 
   constructor(private tagService: TagsService) {
     this.form = new FormGroup({
-      title: new FormControl(''),
-      detail: new FormControl(''),
-      date: new FormControl(''),
-      priority: new FormControl(0),
-      tags: new FormGroup({})
+      title: new FormControl('', Validators.required),
+      detail: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      priority: new FormControl(0, Validators.required),
+      tags: new FormGroup({}, tagsValidator())
     });
-    const tagsGroup = <FormGroup>this.form.get('tags');
     tagService.getTags().forEach(t => {
-      tagsGroup.addControl(t.name, new FormControl(false));
+      this.tags.addControl(t.name, new FormControl(false));
     });
   }
 
@@ -48,7 +64,14 @@ export class NewEventComponent implements OnInit {
     return this.form.get('priority');
   }
 
+  get tags(): FormGroup {
+    return <FormGroup>this.form.get('tags');
+  }
+
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    console.log('submitting');
+  }
 }

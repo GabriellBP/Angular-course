@@ -30,6 +30,22 @@ export class ReactiveFormComponent implements OnInit {
     });
   }
 
+  get title() {
+    return this.form.get('title');
+  }
+
+  get description() {
+    return this.form.get('description');
+  }
+
+  get priority() {
+    return this.form.get('priority');
+  }
+
+  get status() {
+    return this.form.get('status');
+  }
+
   onSubmit(): void {
     // console.log(f.value);
     // console.log(this.eventModel);

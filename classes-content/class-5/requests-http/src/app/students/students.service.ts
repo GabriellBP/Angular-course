@@ -32,8 +32,7 @@ export class StudentsService {
     return this.http.post<Student>(this.API, student).pipe(take(1));
   }
 
-  updateStudent(student: Student) {
-    let pos = this.students.findIndex(s => s.id == student.id);
-    this.students[pos] = student;
+  updateStudent(student: Student): Observable<Student> {
+    return this.http.put<Student>(`${this.API}/${student.id}`, student).pipe(take(1));
   }
 }

@@ -46,6 +46,13 @@ export class StudentFormComponent implements OnInit {
         () => console.log('request complete')
       );
     } else {
-      this.studentService.updateStudent(this.student);
+      this.studentService.updateStudent(this.student).subscribe(
+        studentData => {
+          console.log('updated!');
+          this.router.navigate(['/students', studentData.id]);
+        },
+        error => console.error(error)
+      );
+    }
   }
 }

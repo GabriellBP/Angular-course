@@ -12,13 +12,19 @@ import {take} from 'rxjs/operators';
 export class CoursesComponent implements OnInit {
 
   courses: Course[];
+  error = false;
 
   constructor(private coursesService: CoursesService, private router: Router) { }
 
   ngOnInit(): void {
     this.coursesService.getCourses()
       .pipe(take(1)) // unsubscribe after one try
-      .subscribe(data => this.courses = data);
+      .subscribe(
+        data => this.courses = data,
+        error => {
+          this.error = true;
+        }
+      );
   }
 
   navigateToCourse(course: Course) {

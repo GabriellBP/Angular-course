@@ -4,7 +4,7 @@
       <h2>{{ eventModel.title }}</h2>
       <span>Criado por {{ eventModel.author }} em {{ eventModel.created | date }}</span>
     </div>
-    <button class="commonButton">Ver página do evento</button>
+    <button (click)="editEvent()" class="commonButton">Editar evento</button>
   </div>
   <div class="eventContentProperties">
     <div class="property">

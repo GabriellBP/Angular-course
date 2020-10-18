@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {TagsService} from "../../tags/tags.service";
+import {ActivatedRoute} from "@angular/router";
+import {EventModel} from "../../shared/event.model";
+import {EventListService} from "../event-list.service";
 
 
 function tagsValidator(): ValidatorFn {
@@ -35,12 +38,20 @@ export class NewEventComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private tagService: TagsService) {
+  constructor(private tagService: TagsService, private route: ActivatedRoute, private eventService: EventListService) {
+    let curEvent = new EventModel();
+    let data = this.route.snapshot.data;
+    if (data['action'] == 'EDIT') {
+      // carregar o evento
+      let id = this.route.snapshot.params['id'];
+      curEvent = this.eventService.getEventById(parseInt(id));
+    }
+    console.log(curEvent.eventDate.toISOString());
     this.form = new FormGroup({
-      title: new FormControl('', Validators.required),
-      detail: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      priority: new FormControl(0, Validators.required),
+      title: new FormControl(curEvent.title, Validators.required),
+      detail: new FormControl(curEvent.detail, Validators.required),
+      date: new FormControl(curEvent.eventDate.toISOString().split('T')[0], Validators.required),
+      priority: new FormControl(curEvent.priority, Validators.required),
       tags: new FormGroup({}, tagsValidator())
     });
     tagService.getTags().forEach(t => {
@@ -72,6 +83,6 @@ export class NewEventComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitting');
+    console.log(this.date.value);
   }
 }

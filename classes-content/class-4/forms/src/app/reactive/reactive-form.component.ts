@@ -24,7 +24,7 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
     this.eventModel = new EventModel();
     this.form = new FormGroup({
-      title: new FormControl(this.eventModel.title, Validators.required, this.nameAvailableValidator.validate.bind(this)),
+      title: new FormControl(this.eventModel.title, {updateOn: 'blur', validators: Validators.required, asyncValidators: this.nameAvailableValidator.validate.bind(this)}),
       description: new FormControl(this.eventModel.description, Validators.required),
       priority: new FormControl(this.eventModel.priority, [Validators.required, Validators.min(0), Validators.max(5)]),
       status: new FormControl(this.eventModel.status, Validators.required)

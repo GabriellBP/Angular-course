@@ -9,8 +9,10 @@ export class NameAvailableValidator implements AsyncValidator {
 
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
     return new Observable((observer: Observer<ValidationErrors | null>) => {
+      console.log('consultando titulo', control.value);
       this.eventService.isNameAvailable(control.value).subscribe((available: boolean) => {
-        if (!available)
+        console.log(available);
+        if (available)
           observer.next(null);
         else
           observer.next({nameAvailable: true});

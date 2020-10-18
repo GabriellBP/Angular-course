@@ -8,8 +8,8 @@ import {TagsModule} from '../tags/tags.module';
 
 const routes: Routes = [
   {path: '', component: EventsComponent, canActivate: [AuthGuard], children: [
-      {path: 'events', loadChildren: () => EventListModule},
-      {path: 'tags', loadChildren: () => TagsModule},
+      {path: 'events', loadChildren: () => EventListModule, data: {name: 'Eventos'}},
+      {path: 'tags', loadChildren: () => TagsModule, data: {name: 'Todas as Tags'}},
       {path: '', redirectTo: 'events', pathMatch: 'full'}
     ]}
 ];

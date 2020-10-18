@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from '../shared/event.service';
-import {NgForm} from '@angular/forms';
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {EventModel} from '../shared/event.model';
 
 @Component({
@@ -10,27 +10,32 @@ import {EventModel} from '../shared/event.model';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  stts: string[] = [];
-
   eventModel: EventModel;
+
+  form: FormGroup;
+
+  stts: string[] = [];
 
   constructor(private eventService: EventService) {
     this.stts = eventService.status;
   }
 
   ngOnInit(): void {
-    // console.log(this.stts);
-
-    // this.eventModel = new EventModel('Meu Evento', 'Descrição do meu evento', this.stts[0], 5);
     this.eventModel = new EventModel();
+    this.form = new FormGroup({
+      title: new FormControl(this.eventModel.title, Validators.required),
+      description: new FormControl(this.eventModel.description, Validators.required),
+      priority: new FormControl(this.eventModel.priority, [Validators.required, Validators.min(0), Validators.max(5)]),
+      status: new FormControl(this.eventModel.status, Validators.required)
+    });
   }
 
-  onSubmit(f: NgForm): void {
+  onSubmit(): void {
     // console.log(f.value);
     // console.log(this.eventModel);
 
     this.eventService.createEvent(this.eventModel.title, this.eventModel.description, this.eventModel.status, this.eventModel.priority);
     this.eventService.getEvents();
-    f.resetForm();
+    this.form.reset();
   }
 }

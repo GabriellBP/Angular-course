@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs";
-import {Student} from "../student.model";
-import {StudentsService} from "../students.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Student} from '../student.model';
+import {StudentsService} from '../students.service';
 import {take} from 'rxjs/operators';
 
 @Component({
@@ -30,5 +30,15 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
 
   editStudent() {
     this.router.navigate(['edit'], {relativeTo: this.route, queryParams: {action: 'EDIT'}});
+  }
+
+  deleteStudent() {
+    this.studentService.deleteStudent(this.student.id).subscribe(
+      success => {
+        console.log('success');
+        this.router.navigate(['/students/new'], {queryParams: {action: 'CREATE'}});
+      },
+      error => console.error(error)
+    );
   }
 }

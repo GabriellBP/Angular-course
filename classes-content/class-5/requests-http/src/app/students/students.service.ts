@@ -35,4 +35,8 @@ export class StudentsService {
   updateStudent(student: Student): Observable<Student> {
     return this.http.put<Student>(`${this.API}/${student.id}`, student).pipe(take(1));
   }
+
+  deleteStudent(id: number): Observable<any> {
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+  }
 }

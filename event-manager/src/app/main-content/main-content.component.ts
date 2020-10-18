@@ -19,6 +19,9 @@ export class MainContentComponent implements OnInit {
           parent = child;
           child = child.firstChild;
         }
+        while (!parent.snapshot.data['name']) {
+          parent = parent.parent;
+        }
         this.title = parent.snapshot.data['name'];
       }
     })

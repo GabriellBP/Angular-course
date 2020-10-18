@@ -33,4 +33,13 @@ export class StudentsComponent {
   createNew() {
     this.router.navigate(['/students/new'], {queryParams: {action: 'CREATE'}});
   }
+
+  refreshElements($event: any): void {
+    this.studentService.getStudents()
+      .pipe(take(1))
+      .subscribe(
+        data => this.students = data,
+        error => this.error = true
+      );
+  }
 }

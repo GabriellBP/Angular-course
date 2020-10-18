@@ -20,6 +20,6 @@
 
   </div>
   <div class="container border">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="refreshElements($event)"></router-outlet>
   </div>
 </div>

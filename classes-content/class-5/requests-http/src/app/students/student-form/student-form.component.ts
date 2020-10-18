@@ -20,13 +20,13 @@ export class StudentFormComponent implements OnInit {
     // memory leak
     route.queryParams.subscribe((params) => {
       this.action = params['action'];
-    })
+    });
 
     route.params.subscribe((params) => {
       if (params['id']) {
-        this.student = this.studentService.getStudentById(params['id']);
+        this.studentService.getStudentById(params['id']).subscribe(data => this.student = data);
       }
-    })
+    });
   }
 
   ngOnInit(): void {

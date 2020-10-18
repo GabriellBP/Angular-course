@@ -1,37 +1,31 @@
 import {Injectable} from '@angular/core';
-import {Student} from "../students/student.model";
+import {Student} from './student.model';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StudentsService {
+
+  private readonly API = `${environment.API}students`;
 
   students: Student[] = [];
   currentId = 5;
 
 
-  constructor() {
-    this.students = StudentsService.buildDefaultStudents();
+  constructor(private http: HttpClient) {
   }
+
 
   getStudents() {
-    return this.students;
+    return this.http.get<Student[]>(this.API).pipe(
+      catchError(data => console.log)
+    );
   }
 
-  getStudentById(id): Student {
-    let foundStudent =  this.students.find(s => s.id == id);
-    if (!foundStudent)
-      return new Student(null, "", "");
-    return new Student(foundStudent.id, foundStudent.name, foundStudent.registration);
-  }
-
-  private static buildDefaultStudents() {
-    let students = [];
-    students.push(new Student(1,'Lucas', '4884984598'));
-    students.push(new Student(2,'Gabriel', '9348329048'));
-    students.push(new Student(3,'Gleysson', '39439458'));
-    students.push(new Student(4,'Vigia', '3457686566'));
-    return students;
+  getStudentById(id): Observable<Student> {
+    return this.http.get<Student>(`${this.API}/${id}`);
   }
 
   createStudent(student: Student) {

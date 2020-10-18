@@ -11,10 +11,15 @@ import {Subscription} from "rxjs";
 })
 export class StudentsComponent implements OnInit {
 
-  students: Student[] = [];
+  students: Student[];
+  error = false;
 
   constructor(private studentService: StudentsService, private router: Router, private route: ActivatedRoute) {
-    this.students = this.studentService.getStudents();
+    this.studentService.getStudents()
+      .subscribe(
+        data => this.students = data,
+        error => this.error = true
+        );
   }
 
   ngOnInit(): void {

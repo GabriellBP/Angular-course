@@ -16,7 +16,7 @@ export class StudentDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private studentService: StudentsService, private router: Router) {
     this.subscription = route.params.subscribe((params) => {
-      this.student = studentService.getStudentById(params['id']);
+      studentService.getStudentById(params.id).subscribe(data => this.student = data);
     });
   }
 

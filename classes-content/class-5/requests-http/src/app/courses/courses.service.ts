@@ -5,9 +5,7 @@ import {tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CoursesService {
 
   private readonly API = `${environment.API}courses`;

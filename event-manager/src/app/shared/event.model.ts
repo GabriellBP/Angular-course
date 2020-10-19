@@ -13,7 +13,9 @@ export class EventModel {
   public comments: CommentModel[];
 
   constructor() {
-
+    this.eventDate = new Date();
+    this.tags = [];
+    this.comments = [];
   }
 
   static instance(id: number, title: string, detail: string, author: string, tags: TagModel[],

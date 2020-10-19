@@ -5,6 +5,10 @@ table {
   border-spacing: 0;
 }
 
+tbody {
+  max-height: 300px;
+}
+
 th, td {
   text-align: left;
   padding: 18px 0 15px 30px;
@@ -33,4 +37,8 @@ th.name {
 
 .actButton:first-child {
   border-right: 1px solid rgba(32, 32, 32, 0.15);
+}
+
+.createTagBtn {
+  margin-top: 30px;
 }

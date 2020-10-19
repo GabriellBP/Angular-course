@@ -46,7 +46,7 @@ export class NewEventComponent implements OnInit {
       let id = this.route.snapshot.params['id'];
       curEvent = this.eventService.getEventById(parseInt(id));
     }
-    console.log(curEvent.eventDate.toISOString());
+    console.log(curEvent);
     this.form = new FormGroup({
       title: new FormControl(curEvent.title, Validators.required),
       detail: new FormControl(curEvent.detail, Validators.required),

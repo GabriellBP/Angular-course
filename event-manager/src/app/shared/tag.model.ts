@@ -5,11 +5,12 @@ const colors = ['#ef751c', '#8560ef', '#1975d0']
 export class TagModel {
   public name: string;
   public color: string;
-  public createdBy: User;
+  public detail: string;
 
 
-  constructor(name: string) {
+  constructor(name: string, detail: string) {
     this.name = name;
+    this.detail = detail;
     this.color = TagModel.getRandomColor();
   }
 

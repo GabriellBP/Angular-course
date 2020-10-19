@@ -13,6 +13,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {EventsRoutingModule} from './events/events-routing.module';
 import {EventsModule} from './events/events.module';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -25,7 +26,8 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     AppRoutingModule,
     EventsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {

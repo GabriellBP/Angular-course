@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginError = '';
     this.authService.doLogin(this.email, this.password).subscribe(data => {
-      this.authService.saveToken(data['access']);
+      this.authService.saveToken(data['token']);
       this.router.navigate(['/events']);
     },error => {
       if (error.status == 401) {

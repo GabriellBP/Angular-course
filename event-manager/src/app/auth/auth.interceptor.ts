@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
-    if (!request.url.includes('api/token')) {
+    if (!request.url.includes('api-auth-token')) {
       request = request.clone({
         setHeaders: {
           Authorization: `Token ${token}`
@@ -22,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status == 401) {
-            this.router.navigate(['/login']);
+            this.authService.doLogout();
           }
         }
       }));

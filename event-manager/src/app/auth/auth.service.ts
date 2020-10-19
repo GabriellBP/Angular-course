@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   doLogin(username, password): Observable<boolean> {
-    return this.http.post<boolean>(Constants.API_URL + 'api/token/', {username, password});
+    return this.http.post<boolean>(Constants.API_URL + 'api-auth-token', {username, password});
   }
 
   saveToken(token) {

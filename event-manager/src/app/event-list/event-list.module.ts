@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EventListComponent } from './event-list.component';
 import { EventContentComponent } from './event-content/event-content.component';
 import { EventListService } from './event-list.service';
+import {EventListRoutingModule} from './event-list-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { EventListService } from './event-list.service';
   exports: [EventListComponent],
   providers: [EventListService],
   imports: [
-    CommonModule
+    CommonModule,
+    EventListRoutingModule
   ]
 })
 export class EventListModule { }

@@ -1,4 +1,4 @@
-<div class="eventContent">
+<div *ngIf="eventModel" class="eventContent">
   <div class="eventContentHeader">
     <div class="title">
       <h2>{{ eventModel.title }}</h2>
@@ -30,7 +30,7 @@
   <div class="eventContentCommentaries">
     <h4>COMENTÁRIOS</h4>
     <label>
-      <input class="commentInput" type="text" placeholder="Adicionar comentário">
+      <input class="commonInput" type="text" placeholder="Adicionar comentário">
     </label>
     <div class="commentCard" *ngFor="let comment of eventModel.comments">
       <div class="commentHeader">

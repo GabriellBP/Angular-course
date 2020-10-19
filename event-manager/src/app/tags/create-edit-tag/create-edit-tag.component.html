@@ -1,0 +1,15 @@
+<div class="modalTag" (click)="callClose()">
+    <div (click)="clickedBox($event)" class="box">
+      <div class="title">
+        Criar/editar tag
+      </div>
+
+      <div class="commonForm">
+        <label>Nome</label>
+        <input [(ngModel)]="selectedTag.name" class="commonInput"/>
+        <div class="buttonHolder">
+          <button (click)="save()" class="commonButton big">Salvar</button>
+        </div>
+      </div>
+    </div>
+</div>

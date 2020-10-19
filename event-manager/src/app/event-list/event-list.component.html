@@ -19,7 +19,6 @@
   </div>
 
   <div class="eventContentBox">
-    <div *ngIf="chosenEvent == undefined" class="emptyBox"><p>Clique em algum Evento!</p></div>
-    <app-event-content *ngIf="chosenEvent != undefined" [eventModel]="chosenEvent.event"></app-event-content>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -1,0 +1,18 @@
+<div class="loginWrapper">
+  <div class="loginBox">
+    <div class="title">
+      Acesse sua conta
+    </div>
+
+    <div class="commonForm">
+      <label>E-mail</label>
+      <input [(ngModel)]="email" class="commonInput"/>
+
+      <label>Senha</label>
+      <input [(ngModel)]="password" type="password" class="commonInput"/>
+      <div class="buttonHolder">
+        <button (click)="login()" class="commonButton big">Entrar</button>
+      </div>
+    </div>
+  </div>
+</div>

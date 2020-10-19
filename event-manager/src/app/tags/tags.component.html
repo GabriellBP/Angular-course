@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th class="name">NOME</th>
+      <th>CRIADO POR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tag of tags; let i = index;">
+      <td>
+        {{tag.name}}
+      </td>
+      <td>
+        {{tag.createdBy?.name}}
+        <div class="actButtons">
+          <span class="actButton" (click)="editTag(i)">Editar</span>
+          <span class="actButton" (click)="removeTag(i)">Excluir</span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-create-edit-tag *ngIf="showCreateEditTag" [selectedTag]="selectedTag" (requestedClosing)="closeModal()"></app-create-edit-tag>

@@ -9,17 +9,20 @@
   border-radius: 5px;
   background-color: #ffffff;
   padding: 25px;
-  width: 500px;
+  flex: 1;
   overflow-y: auto;
 }
 
 .nextEventsHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .nextEventsHeader h2 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .eventContentBox {

@@ -13,6 +13,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {EventsRoutingModule} from './events/events-routing.module';
 import {EventsModule} from './events/events.module';
 import {FormsModule} from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./auth/auth.interceptor";
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -25,12 +27,18 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     AppRoutingModule,
     EventsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

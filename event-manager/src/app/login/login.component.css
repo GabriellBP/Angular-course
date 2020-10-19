@@ -9,9 +9,16 @@
 
 .loginBox {
   width: 500px;
-  height: 535px;
   background-color: #fff;
   border-radius: 8px;
+}
+
+.error {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D84315;
 }
 
 .title {

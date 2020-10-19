@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import Constants from "../shared/constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  isLoggedIn = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   doLogout() {
-    this.isLoggedIn = false;
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 
-  doLogin(username, password, returnUrl) {
-    if (username == 'asus' && password == '123456') {
-      this.isLoggedIn = true;
-      if (!returnUrl)
-        this.router.navigate(['/eventos']);
-      else
-        this.router.navigateByUrl(returnUrl);
-      return true;
-    }
-    return false;
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  doLogin(username, password): Observable<boolean> {
+    return this.http.post<boolean>(Constants.API_URL + 'api-auth-token', {username, password});
+  }
+
+  saveToken(token) {
+    localStorage.setItem('token', token);
   }
 }

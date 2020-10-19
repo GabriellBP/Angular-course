@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {TagsService} from "../../tags/tags.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EventModel} from "../../shared/event.model";
 import {EventListService} from "../event-list.service";
 
@@ -15,6 +15,8 @@ function tagsValidator(): ValidatorFn {
         checked = true;
       }
     });
+    if (Object.keys(formGroup.controls).length == 0)
+      return null;
     if (checked)
       return null;
     else
@@ -37,26 +39,38 @@ export class NewEventComponent implements OnInit {
   ];
 
   form: FormGroup;
+  id = null;
+  action = 'CREATE';
 
-  constructor(private tagService: TagsService, private route: ActivatedRoute, private eventService: EventListService) {
-    let curEvent = new EventModel();
+  constructor(private tagService: TagsService, private route: ActivatedRoute, private router: Router, private eventService: EventListService) {
     let data = this.route.snapshot.data;
-    if (data['action'] == 'EDIT') {
-      // carregar o evento
-      let id = this.route.snapshot.params['id'];
-      curEvent = this.eventService.getEventById(parseInt(id));
-    }
-    console.log(curEvent);
+
     this.form = new FormGroup({
-      title: new FormControl(curEvent.title, Validators.required),
-      detail: new FormControl(curEvent.detail, Validators.required),
-      date: new FormControl(curEvent.eventDate.toISOString().split('T')[0], Validators.required),
-      priority: new FormControl(curEvent.priority, Validators.required),
+      title: new FormControl('', Validators.required),
+      detail: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      priority: new FormControl('', Validators.required),
       tags: new FormGroup({}, tagsValidator())
     });
-    tagService.getTags().forEach(t => {
-      this.tags.addControl(t.name, new FormControl(false));
-    });
+
+    if (data['action'] == 'EDIT') {
+      this.action = data['action'];
+      // carregar o evento
+      this.id = this.route.snapshot.params['id'];
+
+      this.eventService.getEventById(parseInt(this.id)).subscribe((ev) => {
+        let event = EventModel.fromApi(ev);
+        this.title.setValue(event.title);
+        this.detail.setValue(event.detail);
+        this.date.setValue(event.eventDate.toISOString().split('T')[0]);
+        this.priority.setValue(event.priority);
+      });
+    }
+
+
+    // tagService.getTags().forEach(t => {
+    //   this.tags.addControl(t.name, new FormControl(false));
+    // });
   }
 
   get title() {
@@ -82,7 +96,20 @@ export class NewEventComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goBack() {
+    this.router.navigate(['/events']);
+  }
+
   onSubmit() {
-    console.log(this.date.value);
+    let evt = EventModel.instance(this.id, this.title.value, this.detail.value, [], this.priority.value, new Date(this.date.value));
+    if (this.action == 'CREATE') {
+      this.eventService.createEvent(evt).subscribe((event) => {
+        this.goBack();
+      });
+    } else {
+      this.eventService.updateEvent(evt).subscribe(event => {
+        this.goBack();
+      });
+    }
   }
 }

@@ -10,11 +10,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EventContentComponent implements OnChanges {
 
-  eventModel: EventModel;
+  eventModel: EventModel = new EventModel();
 
   constructor(private eventService: EventListService, private route: ActivatedRoute, private router: Router) {
     route.params.subscribe((params) => {
-      this.eventModel = eventService.getEventById(parseInt(params['id']));
+      eventService.getEventById(parseInt(params['id'])).subscribe((event) => {
+        this.eventModel = EventModel.fromApi(event);
+      });
     });
   }
 

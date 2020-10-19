@@ -10,18 +10,20 @@ import {Router} from '@angular/router';
 })
 export class EventListComponent implements OnInit {
 
-  nextEvents: EventModel[];
+  nextEvents: EventModel[] = [];
 
   chosenEvent: any;
 
   constructor(private eventListService: EventListService, private router: Router) { }
 
   ngOnInit(): void {
-    this.nextEvents = this.eventListService.getNextEvents();
+    this.eventListService.getNextEvents().subscribe((events) => {
+      this.nextEvents = events.map(e => EventModel.fromApi(e));
+    });
   }
 
   choseEvent(idx: number, eventModel: EventModel): void {
-    this.router.navigate(['/events', idx]);
+    this.router.navigate(['/events', this.nextEvents[idx].id]);
   }
 
   newEvent() {

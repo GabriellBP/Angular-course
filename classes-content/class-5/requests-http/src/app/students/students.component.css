@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100%;
+}
+.container {
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  display: flex;
+}
+
+.border {
+  border-left: 1px dotted grey;
+}
+
+.studentTable {
+  margin-top: 30px;
+  width: 90%;
+}
+
+table,
+th,
+td {
+  padding: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.studentTable td {
+  cursor: pointer;
+}
+

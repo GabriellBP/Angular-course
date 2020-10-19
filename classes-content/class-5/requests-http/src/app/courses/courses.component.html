@@ -1,0 +1,18 @@
+<div *ngIf="!error">
+  <p>Cursos disponíveis. Clique em um para ver os detalhes.</p>
+  <table class="courseTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Curso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses" (click)="navigateToCourse(course)" >
+        <td>{{course.id}}</td>
+        <td>{{course.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p style="color: red;" *ngIf="error">Erro ao consultar cursos. Tente novamente mais tarde!</p>

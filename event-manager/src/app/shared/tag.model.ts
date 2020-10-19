@@ -3,6 +3,7 @@ import {User} from './user.model';
 const colors = ['#ef751c', '#8560ef', '#1975d0']
 
 export class TagModel {
+  public id: number;
   public name: string;
   public color: string;
   public detail: string;

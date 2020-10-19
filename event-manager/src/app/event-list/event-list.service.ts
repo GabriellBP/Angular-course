@@ -19,8 +19,14 @@ export class EventListService {
   }
 
   getEventById(id: number) {
-    return null;
-    //return this.events.find(e => e.id == id);
+    return this.http.get<EventModel>(Constants.API_V1_URL + 'events/' + id);
   }
 
+  createEvent(event: EventModel) {
+    return this.http.post<EventModel>(Constants.API_V1_URL + 'events/', event.toApiObj());
+  }
+
+  updateEvent(evt: EventModel) {
+    return this.http.put<EventModel>(Constants.API_V1_URL + 'events/' + evt.id + '/', evt.toApiObj());
+  }
 }

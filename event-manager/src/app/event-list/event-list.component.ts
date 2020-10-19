@@ -18,12 +18,12 @@ export class EventListComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventListService.getNextEvents().subscribe((events) => {
-      this.nextEvents = events;
+      this.nextEvents = events.map(e => EventModel.fromApi(e));
     });
   }
 
   choseEvent(idx: number, eventModel: EventModel): void {
-    this.router.navigate(['/events', idx]);
+    this.router.navigate(['/events', this.nextEvents[idx].id]);
   }
 
   newEvent() {

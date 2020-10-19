@@ -1,0 +1,42 @@
+.eventForm {
+  max-width: 400px;
+}
+
+.eventForm label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.descriptionBox {
+  min-height: 100px;
+  max-width: 385px;
+  padding-top: 10px;
+}
+
+.tagsGroup {
+  width: 100%;
+  padding: 15px 0;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: auto auto auto auto;
+  justify-content: center;
+}
+
+.tagsGroup label {
+  font-weight: normal;
+}
+
+.invalidInputState {
+  color: #D84315;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.newEventButton {
+  margin-top: 15px;
+}
+
+.btnFormInvalid {
+  opacity: 0.4;
+}
+

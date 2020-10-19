@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TagModel} from '../../shared/tag.model';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-create-edit-tag',
@@ -11,12 +12,18 @@ export class CreateEditTagComponent implements OnInit {
   @Input()
   selectedTag: TagModel;
 
+  act = 'Editar';
+
   @Output()
   requestedClosing: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.selectedTag) {
+      this.selectedTag = new TagModel("", "");
+      this.act = 'Criar';
+    }
   }
 
   callClose() {
@@ -29,5 +36,9 @@ export class CreateEditTagComponent implements OnInit {
 
   clickedBox($event: MouseEvent) {
     $event.stopPropagation();
+  }
+
+  onSubmit(f: NgForm) {
+    this.save();
   }
 }

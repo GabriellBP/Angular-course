@@ -12,16 +12,24 @@ export class EventModel {
   public eventDate: Date;
   public comments: CommentModel[];
 
-  constructor(id: number, title: string, detail: string, author: string, tags: TagModel[],
-              created: Date, priority: number, eventDate: Date, comments: CommentModel[]) {
-    this.id = id;
-    this.title = title;
-    this.detail = detail;
-    this.author = author;
-    this.tags = tags;
-    this.created = created;
-    this.priority = priority;
-    this.eventDate = eventDate;
-    this.comments = comments;
+  constructor() {
+    this.eventDate = new Date();
+    this.tags = [];
+    this.comments = [];
+  }
+
+  static instance(id: number, title: string, detail: string, author: string, tags: TagModel[],
+           created: Date, priority: number, eventDate: Date, comments: CommentModel[]): EventModel {
+    let event = new EventModel();
+    event.id = id;
+    event.title = title;
+    event.detail = detail;
+    event.author = author;
+    event.tags = tags;
+    event.created = created;
+    event.priority = priority;
+    event.eventDate = eventDate;
+    event.comments = comments;
+    return event;
   }
 }

@@ -13,9 +13,8 @@ export class TagsService {
     let user = new User();
     user.id = 1;
     user.name = "Lucas Amorim";
-    for (let i = 0; i < 3; i++) {
-      let tag = new TagModel('Tag ' + (i+1));
-      tag.createdBy = user;
+    for (let i = 0; i < 10; i++) {
+      let tag = new TagModel('Tag ' + (i+1), 'Detalhes da tag ' + (i+1));
       this.tags.push(tag);
     }
   }

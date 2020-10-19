@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th class="name">NOME</th>
-      <th>CRIADO POR</th>
+      <th>DETALHES</th>
     </tr>
   </thead>
   <tbody>
@@ -11,7 +11,7 @@
         {{tag.name}}
       </td>
       <td>
-        {{tag.createdBy?.name}}
+        {{tag.detail}}
         <div class="actButtons">
           <span class="actButton" (click)="editTag(i)">Editar</span>
           <span class="actButton" (click)="removeTag(i)">Excluir</span>
@@ -20,5 +20,7 @@
     </tr>
   </tbody>
 </table>
+
+<button (click)="createTag()" class="commonButton createTagBtn">Criar Tag</button>
 
 <app-create-edit-tag *ngIf="showCreateEditTag" [selectedTag]="selectedTag" (requestedClosing)="closeModal()"></app-create-edit-tag>

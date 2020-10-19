@@ -31,6 +31,11 @@ export class TagsComponent implements OnInit {
   }
 
   closeModal() {
+    this.selectedTag = null;
     this.showCreateEditTag = false;
+  }
+
+  createTag() {
+    this.showCreateEditTag = true;
   }
 }

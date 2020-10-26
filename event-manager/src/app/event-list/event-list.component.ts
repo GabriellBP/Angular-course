@@ -12,7 +12,7 @@ export class EventListComponent implements OnInit {
 
   nextEvents: EventModel[] = [];
 
-  chosenEvent: any;
+  chosenEventIdx: number;
 
   constructor(private eventListService: EventListService, private router: Router) { }
 
@@ -23,6 +23,7 @@ export class EventListComponent implements OnInit {
   }
 
   choseEvent(idx: number, eventModel: EventModel): void {
+    this.chosenEventIdx = idx;
     this.router.navigate(['/events', this.nextEvents[idx].id]);
   }
 

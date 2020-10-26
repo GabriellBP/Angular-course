@@ -21,6 +21,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getUser() {
+    return this.http.get<any>(Constants.API_V1_URL + 'user');
+  }
+
   doLogin(username, password): Observable<boolean> {
     return this.http.post<boolean>(Constants.API_URL + 'api-auth-token', {username, password});
   }

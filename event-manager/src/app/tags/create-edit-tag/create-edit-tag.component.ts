@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TagModel} from '../../shared/tag.model';
 import {NgForm} from "@angular/forms";
+import {TagsService} from '../tags.service';
 
 @Component({
   selector: 'app-create-edit-tag',
@@ -17,7 +18,7 @@ export class CreateEditTagComponent implements OnInit {
   @Output()
   requestedClosing: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private tagsService: TagsService) { }
 
   ngOnInit(): void {
     if (!this.selectedTag) {
@@ -31,7 +32,16 @@ export class CreateEditTagComponent implements OnInit {
   }
 
   save() {
-    this.callClose();
+    if (this.act === 'Criar'){
+      this.tagsService.createTag(this.selectedTag).subscribe((tag) => {
+        this.callClose();
+      });
+    } else if (this.act === 'Editar') {
+      this.tagsService.updateTag(this.selectedTag).subscribe( (tag) => {
+        this.callClose();
+      });
+    }
+
   }
 
   clickedBox($event: MouseEvent) {

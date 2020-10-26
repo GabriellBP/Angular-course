@@ -1,5 +1,5 @@
-import { CommentModel } from './comment.model';
-import { TagModel } from './tag.model';
+import {CommentModel} from './comment.model';
+import {TagModel} from './tag.model';
 
 export class EventModel {
   public id: number;
@@ -17,7 +17,7 @@ export class EventModel {
   }
 
   static instance(id: number, title: string, detail: string, tags: TagModel[],
-                  priority: number, eventDate: Date): EventModel {
+                  priority: number, eventDate: Date, comments?: CommentModel[]): EventModel {
     let event = new EventModel();
     event.id = id;
     event.title = title;
@@ -25,6 +25,9 @@ export class EventModel {
     event.tags = tags;
     event.priority = priority;
     event.eventDate = eventDate;
+    if (comments != undefined) {
+      event.comments = comments;
+    }
     return event;
   }
 
@@ -35,11 +38,13 @@ export class EventModel {
       date: this.eventDate.toISOString(),
       priority: this.priority.toString(),
       tags: this.tags.map(t => t.id),
-    }
+      comments: this.comments.map(c => c.id)
+    };
   }
 
-  static fromApi(event) : EventModel {
-    return EventModel.instance(event.id, event.event, event.detail, event.tags, parseInt(event.priority), new Date(event.date))
+  static fromApi(event): EventModel {
+    return EventModel.instance(event.id, event.event, event.detail, event.tags.map(t => TagModel.fromApi(t)), parseInt(event.priority),
+      new Date(event.date), event.comments);
 
   }
 }

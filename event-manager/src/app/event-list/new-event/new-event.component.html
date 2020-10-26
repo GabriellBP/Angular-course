@@ -23,7 +23,7 @@
   <label class="commonLabel">Tags</label>
   <div formGroupName="tags" class="tagsGroup">
     <label  *ngFor="let tag of form.get('tags').value | keyvalue">
-      <input type="checkbox" [formControlName]="tag.key" [value]="tag.value" /> {{ tag.key }}
+      <input type="checkbox" [formControlName]="tag.key" [value]="tag.value" /> {{ getTagById(tag.key).name }}
     </label>
   </div>
   <p class="invalidInputState" *ngIf="tags.invalid && tags.touched">Favor selecionar ao menos uma tag!</p>

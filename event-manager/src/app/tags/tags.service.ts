@@ -1,27 +1,34 @@
 import { Injectable } from '@angular/core';
 import {TagModel} from '../shared/tag.model';
 import {User} from '../shared/user.model';
+import {HttpClient} from '@angular/common/http';
+import Constants from '../shared/constants';
+import {Observable} from 'rxjs';
+import {EventModel} from '../shared/event.model';
+import {Tag} from '@angular/compiler/src/i18n/serializers/xml_helper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagsService {
 
-  tags: TagModel[] = [];
+  constructor(private http: HttpClient) {
 
-  constructor() {
-    let user = new User();
-    user.id = 1;
-    user.name = "Lucas Amorim";
-    for (let i = 0; i < 10; i++) {
-      let tag = new TagModel('Tag ' + (i+1), 'Detalhes da tag ' + (i+1));
-      this.tags.push(tag);
-    }
   }
 
-  getTags(): TagModel[] {
-    return this.tags;
+  getTags(): Observable<TagModel[]> {
+    return this.http.get<TagModel[]>(Constants.API_V1_URL + 'tags/');
   }
 
+  createTag(tag: TagModel): Observable<TagModel> {
+    return this.http.post<TagModel>(Constants.API_V1_URL + 'tags/', tag.toApiObj());
+  }
 
+  updateTag(tag: TagModel): Observable<TagModel> {
+    return this.http.put<TagModel>(Constants.API_V1_URL + 'tags/' + tag.id + '/', tag.toApiObj());
+  }
+
+  deleteTag(tag: TagModel): Observable<any> {
+    return this.http.delete(Constants.API_V1_URL + 'tags/' + tag.id  + '/');
+  }
 }

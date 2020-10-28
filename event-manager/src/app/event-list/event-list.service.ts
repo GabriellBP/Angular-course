@@ -29,4 +29,13 @@ export class EventListService {
   updateEvent(evt: EventModel) {
     return this.http.put<EventModel>(Constants.API_V1_URL + 'events/' + evt.id + '/', evt.toApiObj());
   }
+
+  getCommentsFromEventId(eventId: number) {
+    return this.http.get<CommentModel[]>(`${Constants.API_V1_URL}comments?search=${eventId}`);
+  }
+
+  createNewComment(user: any, date: Date, value: string, eventId: number) {
+    const commentModel = new CommentModel(user.username, date, value);
+    return this.http.post<CommentModel>(`${Constants.API_V1_URL}comments/`, commentModel.toApiObj(user.email, eventId));
+  }
 }

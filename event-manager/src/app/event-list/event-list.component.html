@@ -7,7 +7,7 @@
     <div class="nextEventsContent">
       <div class="eventCard" *ngFor="let eventModel of nextEvents; index as idx"
            (click)="choseEvent(idx, eventModel)"
-           [class.chosenEvent]="chosenEvent != undefined && idx == chosenEvent.index">
+           [class.chosenEvent]="chosenEventIdx != undefined && idx == chosenEventIdx">
         <span>{{ eventModel.eventDate | date }}</span>
         <p>{{ eventModel.title }}</p>
         <div>

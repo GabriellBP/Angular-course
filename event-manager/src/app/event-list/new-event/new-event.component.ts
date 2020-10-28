@@ -4,6 +4,8 @@ import {TagsService} from "../../tags/tags.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventModel} from "../../shared/event.model";
 import {EventListService} from "../event-list.service";
+import {TagModel} from '../../shared/tag.model';
+import {Tag} from '@angular/compiler/src/i18n/serializers/xml_helper';
 
 
 function tagsValidator(): ValidatorFn {
@@ -39,6 +41,9 @@ export class NewEventComponent implements OnInit {
   form: FormGroup;
   id = null;
   action = 'CREATE';
+  currentEvent: EventModel;
+  fillTagsFn: any;
+  tagModels: TagModel[];
 
   constructor(private tagService: TagsService, private route: ActivatedRoute, private router: Router, private eventService: EventListService) {
     let data = this.route.snapshot.data;
@@ -57,18 +62,45 @@ export class NewEventComponent implements OnInit {
       this.id = this.route.snapshot.params['id'];
 
       this.eventService.getEventById(parseInt(this.id)).subscribe((ev) => {
-        let event = EventModel.fromApi(ev);
-        this.title.setValue(event.title);
-        this.detail.setValue(event.detail);
-        this.date.setValue(event.eventDate.toISOString().split('T')[0]);
-        this.priority.setValue(event.priority);
+        this.currentEvent = EventModel.fromApi(ev);
+        this.title.setValue(this.currentEvent.title);
+        this.detail.setValue(this.currentEvent.detail);
+        this.date.setValue(this.currentEvent.eventDate.toISOString().split('T')[0]);
+        this.priority.setValue(this.currentEvent.priority);
+
+        if (this.fillTagsFn != undefined) {
+          this.fillTagsFn();
+        } else {
+          this.fillTagsFn = this.fillTags.bind(this);
+        }
       });
     }
 
+    tagService.getTags().subscribe((tags) => {
+      this.tagModels = tags.map((t) => TagModel.fromApi(t));
+      this.tagModels.forEach(t => {
+        this.tags.addControl(t.id.toString(), new FormControl(false));
+      });
 
-    // tagService.getTags().forEach(t => {
-    //   this.tags.addControl(t.name, new FormControl(false));
-    // });
+      if (this.fillTagsFn != undefined) {
+        this.fillTagsFn();
+      } else {
+        this.fillTagsFn = this.fillTags.bind(this);
+      }
+    });
+  }
+
+  fillTags() {
+    for (const tgs of this.currentEvent.tags) {
+      this.tags.controls[tgs.id.toString()].setValue(true);
+    }
+  }
+
+  getTagById(id): any {
+    let tag =  this.tagModels.find(t => t.id == id);
+    if (tag == undefined )
+      return {};
+    return tag;
   }
 
   get title() {
@@ -99,7 +131,12 @@ export class NewEventComponent implements OnInit {
   }
 
   onSubmit() {
-    let evt = EventModel.instance(this.id, this.title.value, this.detail.value, [], this.priority.value, new Date(this.date.value));
+    const tags = Object.keys(this.tags.value).filter(k => this.tags.value[k]).map((key) => {
+      let t = this.getTagById(key);
+      return new TagModel(t.name, t.detail, t.id);
+    });
+
+    let evt = EventModel.instance(this.id, this.title.value, this.detail.value, tags, this.priority.value, new Date(this.date.value));
     if (this.action == 'CREATE') {
       this.eventService.createEvent(evt).subscribe((event) => {
         this.goBack();

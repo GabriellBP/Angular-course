@@ -16,21 +16,32 @@ export class TagsComponent implements OnInit {
   constructor(private tagService: TagsService) { }
 
   ngOnInit(): void {
-    this.tags = this.tagService.getTags();
+    this.getTags();
+  }
+
+  getTags() {
+    this.tagService.getTags().subscribe( (tags) => {
+      this.tags = tags.map(t => TagModel.fromApi(t));
+    });
   }
 
   editTag(i: number) {
     this.selectedTag = this.tags[i];
     this.showCreateEditTag = true;
-    console.log('edit tag', i);
   }
 
 
   removeTag(i: number) {
-    this.tags.splice(i, 1);
+    const ans = confirm('Deseja realmente excluir essa Tag?');
+    if (ans) {
+      this.tagService.deleteTag(this.tags[i]).subscribe(() => {
+        this.tags.splice(i, 1);
+      });
+    }
   }
 
   closeModal() {
+    this.getTags();
     this.selectedTag = null;
     this.showCreateEditTag = false;
   }

@@ -8,12 +8,13 @@ import {take} from 'rxjs/operators';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  currentUser: any;
+
+  user: any;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.getUser().pipe(take(1)).subscribe(user => this.currentUser = user);
+    this.authService.getUser().pipe(take(1)).subscribe(data => this.user = data);
   }
 
   logout(): void {

@@ -2,7 +2,7 @@
   <div class="eventContentHeader">
     <div class="title">
       <h2>{{ eventModel.title }}</h2>
-      <span>Criado por {{ eventModel.author }} em {{ eventModel.created | date }}</span>
+<!--      <span>Criado por {{ eventModel.author }} em {{ eventModel.created | date }}</span>-->
     </div>
     <button (click)="editEvent()" class="commonButton">Editar evento</button>
   </div>
@@ -30,7 +30,7 @@
   <div class="eventContentCommentaries">
     <h4>COMENTÁRIOS</h4>
     <label>
-      <input class="commonInput" type="text" placeholder="Adicionar comentário">
+      <input class="commonInput" type="text" placeholder="Adicionar comentário" #com (keyup.enter)="createComment(com.value)">
     </label>
     <div class="commentCard" *ngFor="let comment of eventModel.comments">
       <div class="commentHeader">

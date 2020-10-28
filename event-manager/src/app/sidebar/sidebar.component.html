@@ -3,10 +3,11 @@
 </div>
 <div class="sidebarUserInfo">
   <div class="greetingText">
-    Bem-vindo, Lucas Amorim!
+    Bem-vindo, {{ currentUser?.username }}!
   </div>
 </div>
 <div class="boxLinks">
   <a routerLink="/events">Eventos</a>
   <a routerLink="/tags">Tags</a>
+  <a (click)="logout()" class="logoutButton">Sair</a>
 </div>

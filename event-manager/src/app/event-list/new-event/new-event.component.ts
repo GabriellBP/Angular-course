@@ -15,8 +15,6 @@ function tagsValidator(): ValidatorFn {
         checked = true;
       }
     });
-    if (Object.keys(formGroup.controls).length == 0)
-      return null;
     if (checked)
       return null;
     else

@@ -28,4 +28,8 @@ export class AuthService {
   saveToken(token) {
     localStorage.setItem('token', token);
   }
+
+  getUser() {
+    return this.http.get<any>(Constants.API_V1_URL + 'user')
+  }
 }
